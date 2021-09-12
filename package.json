@@ -13,7 +13,7 @@
   "scripts": {
     "start": "rimraf \"dnd-kit-sortable-tree/dist\" && concurrently \"yarn lib watch\" \"wait-on dnd-kit-sortable-tree/dist/index.js && yarn example start\"",
     "typecheck": "yarn lib build && yarn example typecheck",
-    "lib-publish": "yarn lib publish",
+    "lib-publish": "yarn lib npm publish",
     "lib": "yarn workspace dnd-kit-sortable-tree",
     "example": "yarn workspace example"
   },
