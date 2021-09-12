@@ -1,0 +1,40 @@
+{
+  "name": "dnd-kit-sortable-tree",
+  "version": "0.1.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "tree",
+    "dndkit",
+    "react",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@dnd-kit/core": "^3.1.1",
+    "@dnd-kit/sortable": "^4.0.0",
+    "@dnd-kit/utilities": "^2.0.0",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "copyfiles": "^2.3.0",
+    "tsdx": "^0.14.1",
+    "typescript": "4.2.4"
+  },
+  "peerDependencies": {
+    "@dnd-kit/core": "^3.1.1",
+    "@dnd-kit/sortable": "^4.0.0",
+    "@dnd-kit/utilities": "^2.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "prepublish": "yarn build && copyfiles -u 1 ../README.md ./",
+    "build": "tsdx build --tsconfig tsconfig.build.json",
+    "watch": "tsdx watch --tsconfig tsconfig.build.json"
+  },
+  "author": "Shaddix",
+  "license": "MIT",
+  "homepage": "https://github.com/shaddix/dndkit-sortable-tree#readme",
+  "files": [
+    "dist/**/*"
+  ]
+}

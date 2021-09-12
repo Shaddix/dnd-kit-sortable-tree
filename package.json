@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "workspaces": [
+    "dnd-kit-sortable-tree",
+    "example"
+  ],
+  "nohoist": [
+    "**/node-sass",
+    "**/node-sass/**",
+    "**/jest",
+    "**/jest/**"
+  ],
+  "scripts": {
+    "start": "rimraf \"dnd-kit-sortable-tree/dist\" && concurrently \"yarn lib watch\" \"wait-on dnd-kit-sortable-tree/dist/index.js && yarn example start\"",
+    "typecheck": "yarn lib build && yarn example typecheck",
+    "lib-publish": "yarn lib publish",
+    "lib": "yarn workspace dnd-kit-sortable-tree",
+    "example": "yarn workspace example"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "tsdx": "^0.14.1"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2",
+    "wait-on": "^6.0.0"
+  }
+}

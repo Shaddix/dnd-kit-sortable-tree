@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": ".",
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "paths": {
+      "dnd-kit-sortable-tree": ["dnd-kit-sortable-tree/src"],
+    }
+  }
+}
