@@ -33,7 +33,7 @@
   },
   "author": "Shaddix",
   "license": "MIT",
-  "homepage": "https://github.com/shaddix/dndkit-sortable-tree#readme",
+  "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
   "files": [
     "dist/**/*"
   ]
