@@ -41,6 +41,8 @@ function App() {
     <div className="App">
       <SortableTree<TreeItemData>
         collapsible
+        removable
+        indicator
         items={items}
         onItemsChanged={setItems}
         TreeItemComponent={TreeItem}
