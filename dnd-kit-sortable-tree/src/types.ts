@@ -25,7 +25,7 @@ export type TreeItemComponentProps<T> = {
   wrapperRef?(node: HTMLLIElement): void;
 };
 export type TreeItemComponentType<T> = React.FC<
-  TreeItemComponentProps<T> & RefAttributes<HTMLDivElement>
+  TreeItemComponentProps<T> & RefAttributes<HTMLElement>
 >;
 
 export type FlattenedItem<T> = {

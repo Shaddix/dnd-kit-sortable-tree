@@ -83,7 +83,7 @@ export function SortableTree<TreeItemData>({
     const flattenedTree = flattenTree(items);
     const collapsedItems = flattenedTree.reduce<string[]>(
       (acc, { children, collapsed, id }) =>
-        collapsed && children.length ? [...acc, id] : acc,
+        collapsed && children?.length ? [...acc, id] : acc,
       [],
     );
 
@@ -172,9 +172,9 @@ export function SortableTree<TreeItemData>({
             }
             indentationWidth={indentationWidth}
             indicator={indicator}
-            collapsed={Boolean(item.collapsed && item.children.length)}
+            collapsed={Boolean(item.collapsed && item.children?.length)}
             onCollapse={
-              collapsible && item.children.length
+              collapsible && item.children?.length
                 ? () => handleCollapse(item.id)
                 : undefined
             }
