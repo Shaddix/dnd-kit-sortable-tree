@@ -52,17 +52,17 @@ const dropAnimation: DropAnimation = {
   dragSourceOpacity: 0.5,
 };
 
-export type SortableTreeProps<TData> = {
+export type SortableTreeProps<TData, TElement extends HTMLElement> = {
   items: TreeItems<TData>;
   onItemsChanged(items: TreeItems<TData>): void;
-  TreeItemComponent: TreeItemComponentType<TData>;
+  TreeItemComponent: TreeItemComponentType<TData, TElement>;
   indentationWidth?: number;
   indicator?: boolean;
   removable?: boolean;
   collapsible?: boolean;
 };
 
-export function SortableTree<TreeItemData>({
+export function SortableTree<TreeItemData, TElement extends HTMLElement>({
   collapsible,
   items,
   indicator,
@@ -70,7 +70,7 @@ export function SortableTree<TreeItemData>({
   removable,
   onItemsChanged,
   TreeItemComponent,
-}: SortableTreeProps<TreeItemData>) {
+}: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
   const [offsetLeft, setOffsetLeft] = useState(0);

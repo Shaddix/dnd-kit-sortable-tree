@@ -39,7 +39,7 @@ function App() {
   const [items, setItems] = useState(initialItems);
   return (
     <div className="App">
-      <SortableTree<TreeItemData>
+      <SortableTree
         collapsible
         removable
         indicator

@@ -24,8 +24,8 @@ export type TreeItemComponentProps<T> = {
   onRemove?(): void;
   wrapperRef?(node: HTMLLIElement): void;
 };
-export type TreeItemComponentType<T> = React.FC<
-  TreeItemComponentProps<T> & RefAttributes<HTMLElement>
+export type TreeItemComponentType<T, TElement extends HTMLElement> = React.FC<
+  TreeItemComponentProps<T> & RefAttributes<TElement>
 >;
 
 export type FlattenedItem<T> = {
