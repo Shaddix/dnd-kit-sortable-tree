@@ -1,7 +1,7 @@
 import type { MutableRefObject, RefAttributes } from 'react';
 
 export type TreeItem<T> = {
-  children: TreeItem<T>[];
+  children?: TreeItem<T>[];
   id: string;
   collapsed?: boolean;
 } & T;

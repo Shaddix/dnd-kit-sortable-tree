@@ -6432,8 +6432,8 @@ __metadata:
   linkType: hard
 
 "dnd-kit-sortable-tree@file:../dnd-kit-sortable-tree::locator=example%40workspace%3Aexample":
-  version: 0.1.6
-  resolution: "dnd-kit-sortable-tree@file:../dnd-kit-sortable-tree#../dnd-kit-sortable-tree::hash=c18ee3&locator=example%40workspace%3Aexample"
+  version: 0.1.7
+  resolution: "dnd-kit-sortable-tree@file:../dnd-kit-sortable-tree#../dnd-kit-sortable-tree::hash=760326&locator=example%40workspace%3Aexample"
   dependencies:
     "@dnd-kit/core": ^3.1.1
     "@dnd-kit/sortable": ^4.0.0
@@ -6444,7 +6444,7 @@ __metadata:
     "@dnd-kit/utilities": ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: 849792b1d581ef6fd1abeaf4b52ed2521d65ba669c1eb4755891176249bb8d493f4c93c489dfb27fd47de34c6d2399f7ab51f298904070dfdaffee1020929185
+  checksum: 7dba298e6d1847dbe7e5e76b5f5fb018631e457c501ef24fec0dd3e9ab186928746761c909fb5fde05bc404073c88bf9cfc8c17ac5ce88c603619cb2ee0dd7ec
   languageName: node
   linkType: hard
 
