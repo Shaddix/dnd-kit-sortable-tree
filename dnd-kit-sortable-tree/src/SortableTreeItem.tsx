@@ -30,17 +30,20 @@ const animateLayoutChanges: AnimateLayoutChanges = ({
   isDragging,
 }) => (isSorting || isDragging ? false : true);
 
-type SortableTreeItemProps<T> = TreeItemProps<T> & {
+type SortableTreeItemProps<
+  T,
+  TElement extends HTMLElement,
+> = TreeItemProps<T> & {
   id: string;
-  TreeItemComponent: TreeItemComponentType<T>;
+  TreeItemComponent: TreeItemComponentType<T, TElement>;
 };
 
-export function SortableTreeItem<T>({
+export function SortableTreeItem<T, TElement extends HTMLElement>({
   id,
   depth,
   TreeItemComponent,
   ...props
-}: SortableTreeItemProps<T>) {
+}: SortableTreeItemProps<T, TElement>) {
   const {
     attributes,
     isDragging,

@@ -230,18 +230,14 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
 
     if (projected && over) {
       const { depth, parentId } = projected;
-      const clonedItems: FlattenedItem<TreeItemData>[] = JSON.parse(
-        JSON.stringify(flattenTree(items)),
-      );
+      const clonedItems: FlattenedItem<TreeItemData>[] = flattenTree(items);
       const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
       const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
       const activeTreeItem = clonedItems[activeIndex];
 
       clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
-
       const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
       const newItems = buildTree(sortedItems);
-
       onItemsChanged(newItems);
     }
   }
@@ -292,9 +288,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
         }
       }
 
-      const clonedItems: FlattenedItem<TreeItemData>[] = JSON.parse(
-        JSON.stringify(flattenTree(items)),
-      );
+      const clonedItems: FlattenedItem<TreeItemData>[] = flattenTree(items);
       const overIndex = clonedItems.findIndex(({ id }) => id === overId);
       const activeIndex = clonedItems.findIndex(({ id }) => id === activeId);
       const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);

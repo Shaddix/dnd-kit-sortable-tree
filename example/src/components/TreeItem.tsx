@@ -1,10 +1,11 @@
 import clsx from 'clsx';
 import React, { forwardRef } from 'react';
-import styles from './TreeItem.module.css';
+import styles from './TreeItem.module.scss';
 import type { TreeItemComponentProps } from 'dnd-kit-sortable-tree';
 
 export type TreeItemData = {
   text: string;
+  date: Date;
 };
 
 export const TreeItem = forwardRef<
@@ -29,22 +30,22 @@ export const TreeItem = forwardRef<
     style,
     ...rest
   } = props;
+  if (clone) {
+    console.log('ttt', item.text);
+  }
   return (
     <li
       className={clsx(
         styles.Wrapper,
         clone && styles.clone,
         ghost && styles.ghost,
-        indicator && styles.indicator,
+        //   indicator && styles.indicator,
         disableSelection && styles.disableSelection,
         disableInteraction && styles.disableInteraction,
       )}
       ref={wrapperRef}
       {...rest}
-      style={{
-        ...style,
-        paddingLeft: `${indentationWidth * depth}px`,
-      }}
+      style={{ ...style, paddingLeft: indentationWidth * depth }}
     >
       <div className={styles.TreeItem} ref={ref}>
         <button {...handleProps}>...</button>
@@ -57,6 +58,7 @@ export const TreeItem = forwardRef<
           </button>
         )}
         <span className={styles.Text}>{item.text}</span>
+        <span className={styles.Text}>{item.date.getDate()}</span>
         {!clone && onRemove && <button onClick={onRemove}>X</button>}
         {clone && childCount && childCount > 1 ? (
           <span className={styles.Count}>{childCount}</span>

@@ -84,7 +84,7 @@ function flatten<T>(
     return [
       ...acc,
       { ...item, parentId, depth, index },
-      ...flatten(item.children, item.id, depth + 1),
+      ...flatten(item.children ?? [], item.id, depth + 1),
     ];
   }, []);
 }
@@ -107,7 +107,7 @@ export function buildTree<T>(flattenedItems: FlattenedItem<T>[]): TreeItems<T> {
     parent?.children?.push(item);
   }
 
-  return root.children;
+  return root.children ?? [];
 }
 
 export function findItem<T>(items: TreeItem<T>[], itemId: string) {
@@ -125,7 +125,7 @@ export function findItemDeep<T>(
       return item;
     }
 
-    if (children.length) {
+    if (children?.length) {
       const child = findItemDeep(children, itemId);
 
       if (child) {
@@ -145,7 +145,7 @@ export function removeItem<T>(items: TreeItems<T>, id: string) {
       continue;
     }
 
-    if (item.children.length) {
+    if (item.children?.length) {
       item.children = removeItem(item.children, id);
     }
 
@@ -167,7 +167,7 @@ export function setProperty<TData, T extends keyof TreeItem<TData>>(
       continue;
     }
 
-    if (item.children.length) {
+    if (item.children?.length) {
       item.children = setProperty(item.children, id, property, setter);
     }
   }
@@ -177,7 +177,7 @@ export function setProperty<TData, T extends keyof TreeItem<TData>>(
 
 function countChildren<T>(items: TreeItem<T>[], count = 0): number {
   return items.reduce((acc, { children }) => {
-    if (children.length) {
+    if (children?.length) {
       return countChildren(children, acc + 1);
     }
 
@@ -192,7 +192,7 @@ export function getChildCount<T>(items: TreeItems<T>, id: string) {
 
   const item = findItemDeep(items, id);
 
-  return item ? countChildren(item.children) : 0;
+  return item ? countChildren(item.children ?? []) : 0;
 }
 
 export function removeChildrenOf<T>(items: FlattenedItem<T>[], ids: string[]) {
@@ -200,7 +200,7 @@ export function removeChildrenOf<T>(items: FlattenedItem<T>[], ids: string[]) {
 
   return items.filter((item) => {
     if (item.parentId && excludeParentIds.includes(item.parentId)) {
-      if (item.children.length) {
+      if (item.children?.length) {
         excludeParentIds.push(item.id);
       }
       return false;

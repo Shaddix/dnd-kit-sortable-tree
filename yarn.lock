@@ -5076,6 +5076,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.4.1":
+  version: 3.5.2
+  resolution: "chokidar@npm:3.5.2"
+  dependencies:
+    anymatch: ~3.1.2
+    braces: ~3.0.2
+    fsevents: ~2.3.2
+    glob-parent: ~5.1.2
+    is-binary-path: ~2.1.0
+    is-glob: ~4.0.1
+    normalize-path: ~3.0.0
+    readdirp: ~3.6.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: d1fda32fcd67d9f6170a8468ad2630a3c6194949c9db3f6a91b16478c328b2800f433fb5d2592511b6cb145a47c013ea1cce60b432b1a001ae3ee978a8bffc2d
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:^2.1.8":
   version: 2.1.8
   resolution: "chokidar@npm:2.1.8"
@@ -5096,25 +5115,6 @@ __metadata:
     fsevents:
       optional: true
   checksum: 0c43e89cbf0268ef1e1f41ce8ec5233c7ba022c6f3282c2ef6530e351d42396d389a1148c5a040f291cf1f4083a4c6b2f51dad3f31c726442ea9a337de316bcf
-  languageName: node
-  linkType: hard
-
-"chokidar@npm:^3.4.1":
-  version: 3.5.2
-  resolution: "chokidar@npm:3.5.2"
-  dependencies:
-    anymatch: ~3.1.2
-    braces: ~3.0.2
-    fsevents: ~2.3.2
-    glob-parent: ~5.1.2
-    is-binary-path: ~2.1.0
-    is-glob: ~4.0.1
-    normalize-path: ~3.0.0
-    readdirp: ~3.6.0
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  checksum: d1fda32fcd67d9f6170a8468ad2630a3c6194949c9db3f6a91b16478c328b2800f433fb5d2592511b6cb145a47c013ea1cce60b432b1a001ae3ee978a8bffc2d
   languageName: node
   linkType: hard
 
@@ -6432,8 +6432,8 @@ __metadata:
   linkType: hard
 
 "dnd-kit-sortable-tree@file:../dnd-kit-sortable-tree::locator=example%40workspace%3Aexample":
-  version: 0.1.9
-  resolution: "dnd-kit-sortable-tree@file:../dnd-kit-sortable-tree#../dnd-kit-sortable-tree::hash=6ea2e6&locator=example%40workspace%3Aexample"
+  version: 0.1.11
+  resolution: "dnd-kit-sortable-tree@file:../dnd-kit-sortable-tree#../dnd-kit-sortable-tree::hash=74934a&locator=example%40workspace%3Aexample"
   dependencies:
     "@dnd-kit/core": ^3.1.1
     "@dnd-kit/sortable": ^4.0.0
@@ -6444,7 +6444,7 @@ __metadata:
     "@dnd-kit/utilities": ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: 3e88117f13291443785b317b80107068e97fe30f7b3a4377c93cb779d910bd4cd205442d3c2e8820d55325e42f4e73a3a6e23a7d17f263788974a465e9b103c5
+  checksum: 215144b507c086a11b9fbbc22cc0f2fd7aa880376c6da8d8832d7e06ad69780320b8bbeb7e0d50fd888ab567594ff438b0453ffb91e77925daa0b3df8783f6e9
   languageName: node
   linkType: hard
 
@@ -7545,6 +7545,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-scripts: 4.0.3
+    sass: ^1.39.2
     typescript: ~4.4.3
   languageName: unknown
   linkType: soft
@@ -15246,6 +15247,17 @@ resolve@^2.0.0-next.3:
     sass:
       optional: true
   checksum: d53212e5d199cdd221a67046ab4276c352d56b50ca64347115b36e8ebbb2c68ec396a14d6cf5a08853c830a6b0ec1fd2b016cdc53cbe90a0332a908f50ec2043
+  languageName: node
+  linkType: hard
+
+"sass@npm:^1.39.2":
+  version: 1.39.2
+  resolution: "sass@npm:1.39.2"
+  dependencies:
+    chokidar: ">=3.0.0 <4.0.0"
+  bin:
+    sass: sass.js
+  checksum: 7b3d96e5db3c579f4d48064bf3ec6582999255aab7fa3226d5db4711434b7aa54cc8f656ca4763c4e65c92520d6820651aecd38148b560997b445ba86b3e3c77
   languageName: node
   linkType: hard
 
