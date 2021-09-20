@@ -12,12 +12,18 @@
   "dependencies": {
     "@dnd-kit/core": "^3.1.1",
     "@dnd-kit/sortable": "^4.0.0",
-    "@dnd-kit/utilities": "^2.0.0"
+    "@dnd-kit/utilities": "^2.0.0",
+    "clsx": "^1.1.1",
+    "react-merge-refs": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "autoprefixer": "^10.3.4",
     "copyfiles": "^2.3.0",
+    "cssnano": "^5.0.8",
+    "postcss": "^8.3.6",
+    "rollup-plugin-postcss": "^4.0.1",
     "tsdx": "^0.14.1",
     "typescript": "4.2.4"
   },

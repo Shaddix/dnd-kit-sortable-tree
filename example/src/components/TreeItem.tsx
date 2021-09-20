@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React, { forwardRef } from 'react';
 import styles from './TreeItem.module.scss';
 import type { TreeItemComponentProps } from 'dnd-kit-sortable-tree';
+import { SimpleTreeItemWrapper } from 'dnd-kit-sortable-tree';
 
 export type TreeItemData = {
   text: string;
@@ -12,59 +13,25 @@ export const TreeItem = forwardRef<
   HTMLDivElement,
   TreeItemComponentProps<TreeItemData>
 >((props, ref) => {
-  const {
-    childCount,
-    clone,
-    depth,
-    disableSelection,
-    disableInteraction,
-    ghost,
-    handleProps,
-    indentationWidth,
-    indicator,
-    collapsed,
-    onCollapse,
-    onRemove,
-    item,
-    wrapperRef,
-    style,
-    ...rest
-  } = props;
-  if (clone) {
-    console.log('ttt', item.text);
-  }
+  const { childCount, clone, collapsed, onCollapse, onRemove, item } = props;
+
   return (
-    <li
-      className={clsx(
-        styles.Wrapper,
-        clone && styles.clone,
-        ghost && styles.ghost,
-        //   indicator && styles.indicator,
-        disableSelection && styles.disableSelection,
-        disableInteraction && styles.disableInteraction,
+    <SimpleTreeItemWrapper {...props} ref={ref}>
+      {onCollapse && (
+        <button
+          onClick={onCollapse}
+          className={clsx(styles.Collapse, collapsed && styles.collapsed)}
+        >
+          {collapseIcon}
+        </button>
       )}
-      ref={wrapperRef}
-      {...rest}
-      style={{ ...style, paddingLeft: indentationWidth * depth }}
-    >
-      <div className={styles.TreeItem} ref={ref}>
-        <button {...handleProps}>...</button>
-        {onCollapse && (
-          <button
-            onClick={onCollapse}
-            className={clsx(styles.Collapse, collapsed && styles.collapsed)}
-          >
-            {collapseIcon}
-          </button>
-        )}
-        <span className={styles.Text}>{item.text}</span>
-        <span className={styles.Text}>{item.date.getDate()}</span>
-        {!clone && onRemove && <button onClick={onRemove}>X</button>}
-        {clone && childCount && childCount > 1 ? (
-          <span className={styles.Count}>{childCount}</span>
-        ) : null}
-      </div>
-    </li>
+      <span className={styles.Text}>{item.text}</span>
+      <span className={styles.Text}>{item.date.getDate()}</span>
+      {!clone && onRemove && <button onClick={onRemove}>X</button>}
+      {clone && childCount && childCount > 1 ? (
+        <span className={styles.Count}>{childCount}</span>
+      ) : null}
+    </SimpleTreeItemWrapper>
   );
 });
 

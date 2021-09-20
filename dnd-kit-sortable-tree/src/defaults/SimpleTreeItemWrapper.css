@@ -1,0 +1,52 @@
+.dnd-sortable-tree_simple_wrapper {
+    list-style: none;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+}
+
+.dnd-sortable-tree_simple_tree-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #fff;
+    border: 1px solid #dedede;
+    color: #222;
+    box-sizing: border-box;
+}
+
+.dnd-sortable-tree_simple_clone {
+    display: inline-block;
+    pointer-events: none;
+    padding: 5px;
+}
+
+.dnd-sortable-tree_simple_clone > .dnd-sortable-tree_simple_tree-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    padding-right: 24px;
+    border-radius: 4px;
+    box-shadow: 0 15px 15px 0 rgba(34, 33, 81, 0.1);
+}
+
+
+.dnd-sortable-tree_simple_ghost {
+    opacity: 0.5;
+}
+
+.dnd-sortable-tree_simple_disable-selection {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.dnd-sortable-tree_simple_disable-interaction {
+    pointer-events: none;
+}
+
+.dnd-sortable-tree_simple_handle {
+    width: 12px;
+    height: 40px;
+    margin-right: 10px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='40' viewBox='0 0 20 20'><path d='M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z' /></svg>");
+}

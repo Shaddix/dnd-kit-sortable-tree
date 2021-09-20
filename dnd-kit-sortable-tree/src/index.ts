@@ -1,13 +1,6 @@
-import {
-  SortableTree,
-  SortableTreeProps as SortableTreePropsInner,
-} from './SortableTree';
-import type {
-  TreeItems as TreeItemsInner,
-  TreeItemComponentProps as TreeItemComponentPropsInner,
-} from './types';
+import { SimpleTreeItemWrapper } from './defaults/SimpleTreeItemWrapper';
+import { SortableTree, SortableTreeProps } from './SortableTree';
+import type { TreeItems, TreeItemComponentProps } from './types';
 
-export type TreeItemComponentProps<T> = TreeItemComponentPropsInner<T>;
-export type SortableTreeProps<T> = SortableTreePropsInner<T>;
-export type TreeItems<T> = TreeItemsInner<T>;
-export { SortableTree };
+export { SortableTree, SimpleTreeItemWrapper };
+export type { TreeItemComponentProps, TreeItems, SortableTreeProps };
