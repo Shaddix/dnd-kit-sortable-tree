@@ -50,6 +50,7 @@ function App() {
     <div className="App">
       <SortableTree
         collapsible
+        indentationWidth={10}
         // removable
         items={items}
         onItemsChanged={setItems}

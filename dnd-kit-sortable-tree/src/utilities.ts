@@ -79,12 +79,21 @@ function flatten<T>(
   items: TreeItems<T>,
   parentId: string | null = null,
   depth = 0,
+  parent: FlattenedItem<T> | null = null,
 ): FlattenedItem<T>[] {
   return items.reduce<FlattenedItem<T>[]>((acc, item, index) => {
+    const flattenedItem = {
+      ...item,
+      parentId,
+      depth,
+      index,
+      isLast: items.length === index + 1,
+      parent: parent,
+    };
     return [
       ...acc,
-      { ...item, parentId, depth, index },
-      ...flatten(item.children ?? [], item.id, depth + 1),
+      flattenedItem,
+      ...flatten(item.children ?? [], item.id, depth + 1, flattenedItem),
     ];
   }, []);
 }

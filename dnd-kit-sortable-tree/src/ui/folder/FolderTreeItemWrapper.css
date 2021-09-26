@@ -46,18 +46,26 @@
     width: 12px;
     height: 40px;
     margin-right: 10px;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='40' viewBox='0 0 10 20'><line style='stroke-width: 4px;' x1='5' y1='0' x2='5' y2='20'/></svg>");
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='40' viewBox='0 0 100% 100%'><line style='stroke-width: 4px;' x1='5' y1='0' x2='5' y2='20'/></svg>");
 }
+
 .dnd-sortable-tree_folder_line {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 10 20'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0%' x2='50%' y2='100%'/></svg>");
+    width: 20px;
+    align-self: stretch;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0' x2='50%' y2='100%'/></svg>");
 }
 .dnd-sortable-tree_folder_line-last {
-    width: 50px;
-    height: 50px;
-    display: flex;
-background-color: yellow;
-    /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 10 20'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0%' x2='50%' y2='50%'/></svg>") !important;*/
+    width: 20px;
+    align-self: stretch;
 }
+.dnd-sortable-tree_folder_line-to_self {
+    width: 20px;
+    align-self: stretch;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0' x2='50%' y2='100%'/><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='50%' x2='100%' y2='50%'/></svg>");
+}
+.dnd-sortable-tree_folder_line-to_self-last {
+    width: 20px;
+    align-self: stretch;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0' x2='50%' y2='50%'/><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='50%' x2='100%' y2='50%'/></svg>");
+}
+

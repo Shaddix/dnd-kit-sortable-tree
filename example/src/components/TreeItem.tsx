@@ -20,7 +20,10 @@ export const TreeItem = forwardRef<
     <FolderTreeItemWrapper {...props} ref={ref}>
       {onCollapse && (
         <button
-          onClick={onCollapse}
+          onClick={(e) => {
+            e.preventDefault();
+            onCollapse?.();
+          }}
           className={clsx(styles.Collapse, collapsed && styles.collapsed)}
         >
           {collapseIcon}

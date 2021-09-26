@@ -148,6 +148,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
+  console.log(flattenedItems);
   return (
     <DndContext
       announcements={announcements}
@@ -178,7 +179,9 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
                 ? () => handleCollapse(item.id)
                 : undefined
             }
+            isLast={item.isLast}
             onRemove={removable ? () => handleRemove(item.id) : undefined}
+            parent={item.parent}
             TreeItemComponent={TreeItemComponent}
           />
         ))}
@@ -192,6 +195,8 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
                 clone
                 childCount={getChildCount(items, activeId) + 1}
                 indentationWidth={indentationWidth}
+                isLast={false}
+                parent={activeItem.parent}
               />
             ) : null}
           </DragOverlay>,

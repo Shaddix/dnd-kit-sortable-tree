@@ -3,7 +3,7 @@ import { AnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 import { iOS } from './utilities';
-import type { TreeItem, TreeItemComponentType } from './types';
+import type { FlattenedItem, TreeItem, TreeItemComponentType } from './types';
 
 export interface TreeItemProps<T> extends HTMLAttributes<HTMLLIElement> {
   childCount?: number;
@@ -17,7 +17,8 @@ export interface TreeItemProps<T> extends HTMLAttributes<HTMLLIElement> {
   indicator?: boolean;
   indentationWidth: number;
   item: TreeItem<T>;
-
+  isLast: boolean;
+  parent: FlattenedItem<T> | null;
   onCollapse?(): void;
 
   onRemove?(): void;
@@ -41,7 +42,9 @@ type SortableTreeItemProps<
 export function SortableTreeItem<T, TElement extends HTMLElement>({
   id,
   depth,
+  isLast,
   TreeItemComponent,
+  parent,
   ...props
 }: SortableTreeItemProps<T, TElement>) {
   const {
@@ -71,6 +74,8 @@ export function SortableTreeItem<T, TElement extends HTMLElement>({
       ghost={isDragging}
       disableSelection={iOS}
       disableInteraction={isSorting}
+      isLast={isLast}
+      parent={parent}
       handleProps={{
         ...attributes,
         ...listeners,
