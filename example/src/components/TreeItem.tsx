@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react';
 import styles from './TreeItem.module.scss';
 import type { TreeItemComponentProps } from 'dnd-kit-sortable-tree';
 import { SimpleTreeItemWrapper } from 'dnd-kit-sortable-tree';
+import { FolderTreeItemWrapper } from 'dnd-kit-sortable-tree';
 
 export type TreeItemData = {
   text: string;
@@ -16,7 +17,7 @@ export const TreeItem = forwardRef<
   const { childCount, clone, collapsed, onCollapse, onRemove, item } = props;
 
   return (
-    <SimpleTreeItemWrapper {...props} ref={ref}>
+    <FolderTreeItemWrapper {...props} ref={ref}>
       {onCollapse && (
         <button
           onClick={onCollapse}
@@ -31,7 +32,7 @@ export const TreeItem = forwardRef<
       {clone && childCount && childCount > 1 ? (
         <span className={styles.Count}>{childCount}</span>
       ) : null}
-    </SimpleTreeItemWrapper>
+    </FolderTreeItemWrapper>
   );
 });
 

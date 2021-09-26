@@ -1,0 +1,63 @@
+.dnd-sortable-tree_folder_wrapper {
+    list-style: none;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+    display: flex;
+    flex-direction:row;
+}
+
+.dnd-sortable-tree_folder_tree-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
+
+.dnd-sortable-tree_folder_clone {
+    display: inline-block;
+    pointer-events: none;
+    padding: 5px;
+}
+
+.dnd-sortable-tree_folder_clone > .dnd-sortable-tree_folder_tree-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    padding-right: 24px;
+    border-radius: 4px;
+}
+
+
+.dnd-sortable-tree_folder_ghost {
+    opacity: 0.5;
+}
+
+.dnd-sortable-tree_folder_disable-selection {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.dnd-sortable-tree_folder_disable-interaction {
+    pointer-events: none;
+}
+
+.dnd-sortable-tree_folder_handle {
+    width: 12px;
+    height: 40px;
+    margin-right: 10px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='40' viewBox='0 0 10 20'><line style='stroke-width: 4px;' x1='5' y1='0' x2='5' y2='20'/></svg>");
+}
+.dnd-sortable-tree_folder_line {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 10 20'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0%' x2='50%' y2='100%'/></svg>");
+}
+.dnd-sortable-tree_folder_line-last {
+    width: 50px;
+    height: 50px;
+    display: flex;
+background-color: yellow;
+    /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 10 20'><line stroke='black' style='stroke-width: 1px;' x1='50%' y1='0%' x2='50%' y2='50%'/></svg>") !important;*/
+}

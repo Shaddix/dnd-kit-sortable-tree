@@ -1,6 +1,9 @@
 import clsx from 'clsx';
 import React, { forwardRef } from 'react';
-import type { TreeItemComponentType, TreeItemComponentProps } from '../types';
+import type {
+  TreeItemComponentType,
+  TreeItemComponentProps,
+} from '../../types';
 import './SimpleTreeItemWrapper.css';
 
 export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
