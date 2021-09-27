@@ -1,6 +1,6 @@
 {
   "name": "dnd-kit-sortable-tree",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
