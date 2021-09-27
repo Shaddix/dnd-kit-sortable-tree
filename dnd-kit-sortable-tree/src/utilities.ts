@@ -8,13 +8,17 @@ function getDragDepth(offset: number, indentationWidth: number) {
   return Math.round(offset / indentationWidth);
 }
 
+let _revertLastChanges = () => {};
 export function getProjection<T>(
   items: FlattenedItem<T>[],
-  activeId: string,
-  overId: string,
+  activeId: string | null,
+  overId: string | null,
   dragOffset: number,
   indentationWidth: number,
 ) {
+  _revertLastChanges();
+  _revertLastChanges = () => {};
+  if (!activeId || !overId) return null;
   const overItemIndex = items.findIndex(({ id }) => id === overId);
   const activeItemIndex = items.findIndex(({ id }) => id === activeId);
   const activeItem = items[activeItemIndex];
@@ -35,7 +39,30 @@ export function getProjection<T>(
     depth = minDepth;
   }
 
-  return { depth, maxDepth, minDepth, parentId: getParentId() };
+  let parent: FlattenedItem<T> | null = previousItem;
+  let previousItemOnDepth: FlattenedItem<T> | null = null;
+  let currentDepth = maxDepth;
+  const isLast = (nextItem?.depth ?? -1) < depth;
+  while (depth !== currentDepth) {
+    currentDepth--;
+    previousItemOnDepth = parent;
+    parent = parent?.parent ?? null;
+  }
+
+  if (previousItemOnDepth && previousItemOnDepth.isLast) {
+    _revertLastChanges = () => {
+      previousItemOnDepth!.isLast = true;
+    };
+    previousItemOnDepth.isLast = false;
+  }
+  return {
+    depth,
+    maxDepth,
+    minDepth,
+    parentId: getParentId(),
+    parent,
+    isLast,
+  };
 
   function getParentId() {
     if (depth === 0 || !previousItem) {

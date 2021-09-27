@@ -87,21 +87,19 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
       [],
     );
 
-    return removeChildrenOf(
+    const result = removeChildrenOf(
       flattenedTree,
       activeId ? [activeId, ...collapsedItems] : collapsedItems,
     );
+    return result;
   }, [activeId, items]);
-  const projected =
-    activeId && overId
-      ? getProjection(
-          flattenedItems,
-          activeId,
-          overId,
-          offsetLeft,
-          indentationWidth,
-        )
-      : null;
+  const projected = getProjection(
+    flattenedItems,
+    activeId,
+    overId,
+    offsetLeft,
+    indentationWidth,
+  );
   const sensorContext: SensorContext<TreeItemData> = useRef({
     items: flattenedItems,
     offset: offsetLeft,
@@ -148,7 +146,6 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
-  console.log(flattenedItems);
   return (
     <DndContext
       announcements={announcements}
@@ -179,9 +176,13 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
                 ? () => handleCollapse(item.id)
                 : undefined
             }
-            isLast={item.isLast}
             onRemove={removable ? () => handleRemove(item.id) : undefined}
-            parent={item.parent}
+            isLast={
+              item.id === activeId && projected ? projected.isLast : item.isLast
+            }
+            parent={
+              item.id === activeId && projected ? projected.parent : item.parent
+            }
             TreeItemComponent={TreeItemComponent}
           />
         ))}

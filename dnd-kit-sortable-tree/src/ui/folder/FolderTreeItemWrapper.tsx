@@ -10,7 +10,7 @@ import './FolderTreeItemWrapper.css';
 function flattenParents<T>(
   parent: FlattenedItem<T> | null,
 ): FlattenedItem<T>[] {
-  if (parent === null) return [];
+  if (!parent) return [];
   return [...flattenParents(parent.parent), parent];
 }
 
