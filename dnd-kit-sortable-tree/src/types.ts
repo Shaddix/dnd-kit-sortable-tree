@@ -58,6 +58,35 @@ export type TreeItemComponentProps<T> = {
    */
   isLast: boolean;
 
+  /*
+  If false, dragging is handled automatically (whole child node is a drag Handle).
+  If true, the children should handle dragging manually (by assigning handleProps to some div that will be the Handle).
+  Default: false.
+ */
+  manualDrag?: boolean;
+
+  /*
+  If true, Collapse button is not shown within the Wrapper (implies, that it's shown in Children)
+  If false, Collapse button is show as part of Wrapper. Styling could be adjusted via CSS.
+  Default: false.
+   */
+  hideCollapseButton?: boolean;
+
+  /*
+  If false, click on the whole item triggers collapse/expand.
+  If true, this behavior is disabled and you should either rely on default CollapseButton (managed by `hideCollapseButton` props)
+  or you should call `collapse` method yourself when needed.
+  Default: false.
+   */
+  disableCollapseOnItemClick?: boolean;
+
+  /*
+  ONLY makes sens if `manualDrag` is true! If `manualDrag` is false `showDragHandle` is automatically false.
+  If true, the special drag Handle is shown within a Wrapper.
+  If false, it's up to the developer to either handle drag by himself, or use automatic dragging (by ensuring that `manualDrag` is false)
+   */
+  showDragHandle?: boolean;
+
   handleProps?: any;
   indicator?: boolean;
   indentationWidth: number;

@@ -14,6 +14,7 @@ import {
   KeyboardSensor,
   Modifier,
   PointerSensor,
+  PointerSensorOptions,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
@@ -60,8 +61,14 @@ export type SortableTreeProps<TData, TElement extends HTMLElement> = {
   indicator?: boolean;
   removable?: boolean;
   collapsible?: boolean;
+  pointerSensorOptions?: PointerSensorOptions;
 };
-
+const defaultPointerSensorOptions: PointerSensorOptions = {
+  activationConstraint: {
+    delay: 200,
+    tolerance: 5,
+  },
+};
 export function SortableTree<TreeItemData, TElement extends HTMLElement>({
   collapsible,
   items,
@@ -70,6 +77,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
   removable,
   onItemsChanged,
   TreeItemComponent,
+  pointerSensorOptions,
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
@@ -108,7 +116,10 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
     sortableTreeKeyboardCoordinates(sensorContext, indentationWidth),
   );
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(
+      PointerSensor,
+      pointerSensorOptions ?? defaultPointerSensorOptions,
+    ),
     useSensor(KeyboardSensor, {
       coordinateGetter,
     }),

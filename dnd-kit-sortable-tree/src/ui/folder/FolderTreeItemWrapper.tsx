@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React, { forwardRef } from 'react';
 import type {
-  TreeItemComponentType,
   TreeItemComponentProps,
   FlattenedItem,
+  TreeItemComponentType,
 } from '../../types';
 import './FolderTreeItemWrapper.css';
 
@@ -47,10 +47,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
         )}
         ref={wrapperRef}
         {...rest}
-        style={{
-          ...style,
-          // paddingLeft: clone ? indentationWidth : indentationWidth * depth,
-        }}
+        style={style}
       >
         {flattenedParents.map((item) => (
           <div
@@ -68,8 +65,30 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
               : 'dnd-sortable-tree_folder_line-to_self'
           }
         />
-        <div className={'dnd-sortable-tree_folder_tree-item'} ref={ref}>
+        {props.manualDrag && props.showDragHandle && (
           <div className={'dnd-sortable-tree_folder_handle'} {...handleProps} />
+        )}
+        {(!props.manualDrag || !props.hideCollapseButton) && onCollapse && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onCollapse?.();
+            }}
+            className={clsx(
+              'dnd-sortable-tree_folder_tree-item-collapse_button',
+              collapsed &&
+                'dnd-sortable-tree_folder_tree-item-collapse_button-collapsed',
+            )}
+          />
+        )}
+        <div
+          className={'dnd-sortable-tree_folder_tree-item'}
+          ref={ref}
+          {...(props.manualDrag ? undefined : handleProps)}
+          onClick={
+            props.disableCollapseOnItemClick ? undefined : props.onCollapse
+          }
+        >
           {props.children}
         </div>
       </li>
