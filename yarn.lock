@@ -6568,7 +6568,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dnd-kit-sortable-tree@^0.1.16, dnd-kit-sortable-tree@workspace:dnd-kit-sortable-tree":
+"dnd-kit-sortable-tree@^0.1.17, dnd-kit-sortable-tree@workspace:dnd-kit-sortable-tree":
   version: 0.0.0-use.local
   resolution: "dnd-kit-sortable-tree@workspace:dnd-kit-sortable-tree"
   dependencies:
@@ -7664,7 +7664,7 @@ __metadata:
     "@types/react": ^17.0.3
     "@types/react-dom": ^17.0.3
     clsx: ^1.1.1
-    dnd-kit-sortable-tree: ^0.1.16
+    dnd-kit-sortable-tree: ^0.1.17
     eslint-config-prettier: ^6.11.0
     eslint-plugin-prettier: ^3.1.4
     prettier: ^2.2.1
