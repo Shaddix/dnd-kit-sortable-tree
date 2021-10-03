@@ -16,9 +16,21 @@ export const initialItems: TreeItems<TreeItemData> = [
     text: 'Collections1',
     date: new Date(),
     children: [
-      { id: 'Spring', children: [], text: 'Spring1', date: new Date() },
+      {
+        id: 'Spring',
+        children: [],
+        text: 'Spring1',
+        date: new Date(),
+        canHaveChildren: false,
+      },
       { id: 'Summer', children: [], text: 'Summer1', date: new Date() },
-      { id: 'Fall', children: [], text: 'Fall1', date: new Date() },
+      {
+        id: 'Fall',
+        children: [],
+        text: 'Fall1',
+        date: new Date(),
+        canHaveChildren: false,
+      },
       { id: 'Winter', children: [], text: 'Winter1', date: new Date() },
     ],
   },

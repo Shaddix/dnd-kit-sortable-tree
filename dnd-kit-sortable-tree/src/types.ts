@@ -3,7 +3,17 @@ import type { MutableRefObject, RefAttributes } from 'react';
 export type TreeItem<T> = {
   children?: TreeItem<T>[];
   id: string;
+  /*
+  Default: false.
+   */
   collapsed?: boolean;
+
+  /*
+  If false, doesn't allow to drag&drop nodes so that they become children of current node.
+  If you are showing files&directories it makes sense to set this to `true` for folders, and `false` for files.
+  Default: true.
+   */
+  canHaveChildren?: boolean;
 } & T;
 
 export type TreeItems<T> = TreeItem<T>[];

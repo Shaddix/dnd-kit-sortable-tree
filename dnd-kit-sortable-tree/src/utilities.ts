@@ -41,7 +41,7 @@ export function getProjection<T>(
 
   let parent: FlattenedItem<T> | null = previousItem;
   let previousItemOnDepth: FlattenedItem<T> | null = null;
-  let currentDepth = maxDepth;
+  let currentDepth = previousItem.depth + 1;
   const isLast = (nextItem?.depth ?? -1) < depth;
   while (depth !== currentDepth) {
     currentDepth--;
@@ -88,7 +88,9 @@ export function getProjection<T>(
 
 function getMaxDepth<T>({ previousItem }: { previousItem: FlattenedItem<T> }) {
   if (previousItem) {
-    return previousItem.depth + 1;
+    return previousItem.canHaveChildren === false
+      ? previousItem.depth
+      : previousItem.depth + 1;
   }
 
   return 0;
