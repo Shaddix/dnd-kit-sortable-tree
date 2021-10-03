@@ -4,6 +4,29 @@ import { SortableTree, TreeItems } from 'dnd-kit-sortable-tree';
 import { TreeItem } from './components/TreeItem';
 import type { TreeItemData } from './components/TreeItem';
 
+export const initialItems2: TreeItems<TreeItemData> = [
+  {
+    id: 'Home1',
+    children: [],
+    text: 'Home1',
+    date: new Date(),
+    canHaveChildren: false,
+  },
+  {
+    id: 'Home2',
+    children: [],
+    text: 'Home2',
+    date: new Date(),
+    canHaveChildren: false,
+  },
+  {
+    id: 'Home3',
+    children: [],
+    text: 'Home3',
+    date: new Date(),
+    canHaveChildren: false,
+  },
+];
 export const initialItems: TreeItems<TreeItemData> = [
   {
     id: 'Home',
