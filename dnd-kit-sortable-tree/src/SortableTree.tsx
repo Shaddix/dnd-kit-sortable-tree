@@ -65,7 +65,7 @@ export type SortableTreeProps<TData, TElement extends HTMLElement> = {
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
-    delay: 200,
+    delay: 100,
     tolerance: 5,
   },
 };
