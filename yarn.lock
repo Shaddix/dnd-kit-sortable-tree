@@ -1709,39 +1709,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/core@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "@dnd-kit/core@npm:3.1.1"
+"@dnd-kit/core@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@dnd-kit/core@npm:4.0.0"
   dependencies:
     "@dnd-kit/accessibility": ^3.0.0
-    "@dnd-kit/utilities": ^2.0.0
+    "@dnd-kit/utilities": ^3.0.0
     tslib: ^2.0.0
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: e52a49ad1e831644544da0e4a0e2e44621f9bb55754f9498ea5bc915ec6b5c46108444e7d67592f94c517618ef53b569f11ad1846798db31fcdee56a57685334
+  checksum: c303183fcdc6d02fd03924bb9ca490e6660e98337dc6fc90389be0efe88aae7f0e54023a084130f3fc1a89bfd0bbb6bcbe4062977b41701a63cfd241f81240b8
   languageName: node
   linkType: hard
 
-"@dnd-kit/sortable@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@dnd-kit/sortable@npm:4.0.0"
+"@dnd-kit/sortable@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@dnd-kit/sortable@npm:5.0.0"
   dependencies:
-    "@dnd-kit/utilities": ^2.0.0
+    "@dnd-kit/utilities": ^3.0.0
     tslib: ^2.0.0
   peerDependencies:
-    "@dnd-kit/core": ^3.1.0
+    "@dnd-kit/core": ^4.0.0
     react: ">=16.8.0"
-  checksum: c2c23a1ed4528e8b05901891a1852458d8b201d0fc0848750630f705f8547869078f08f2ac9026e7aede3464a52c6c4dcbc9e6b0e1bcd0c652c77f98f592d8ab
+  checksum: 33761b05a2393f2cfd50fdb06a0c569aa5024a0b260def2f65388dee62b9d062062dfc6f03c0630c184377993498ade9e1267bfa362bf5aa3cdbbe0a2c9d5a58
   languageName: node
   linkType: hard
 
-"@dnd-kit/utilities@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@dnd-kit/utilities@npm:2.0.0"
+"@dnd-kit/utilities@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@dnd-kit/utilities@npm:3.0.0"
   dependencies:
     tslib: ^2.0.0
-  checksum: 10173fc8d6fa8e46394ac2b739e443a3254e31854cbdbe810782bb7b6f4b4dd948752c3114479827c0da757e6616dd44a70394b6e8524d807514db0be192b18d
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: fa5d45ba09e74f1855b485dd75404617d474aed2e37dc358150d741b238f904daa311383f2db5b8e607680abe360c28fd8869dbac8ba1867874b045515956692
   languageName: node
   linkType: hard
 
@@ -6570,9 +6572,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dnd-kit-sortable-tree@workspace:dnd-kit-sortable-tree"
   dependencies:
-    "@dnd-kit/core": ^3.1.1
-    "@dnd-kit/sortable": ^4.0.0
-    "@dnd-kit/utilities": ^2.0.0
+    "@dnd-kit/core": ^4.0.0
+    "@dnd-kit/sortable": ^5.0.0
+    "@dnd-kit/utilities": ^3.0.0
     "@types/react": ^17.0.3
     "@types/react-dom": ^17.0.3
     autoprefixer: ^10.3.4
