@@ -62,6 +62,7 @@ export type SortableTreeProps<TData, TElement extends HTMLElement> = {
   removable?: boolean;
   collapsible?: boolean;
   pointerSensorOptions?: PointerSensorOptions;
+  disableSorting?: boolean;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -78,6 +79,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
   onItemsChanged,
   TreeItemComponent,
   pointerSensorOptions,
+  disableSorting,
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
@@ -157,20 +159,24 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
+  console.log('qwe', disableSorting);
   return (
     <DndContext
       announcements={announcements}
-      sensors={sensors}
+      sensors={disableSorting ? undefined : sensors}
       modifiers={indicator ? [adjustTranslate] : undefined}
       collisionDetection={closestCenter}
       // measuring={measuring}
-      onDragStart={handleDragStart}
-      onDragMove={handleDragMove}
-      onDragOver={handleDragOver}
-      onDragEnd={handleDragEnd}
-      onDragCancel={handleDragCancel}
+      onDragStart={disableSorting ? undefined : handleDragStart}
+      onDragMove={disableSorting ? undefined : handleDragMove}
+      onDragOver={disableSorting ? undefined : handleDragOver}
+      onDragEnd={disableSorting ? undefined : handleDragEnd}
+      onDragCancel={disableSorting ? undefined : handleDragCancel}
     >
-      <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
+      <SortableContext
+        items={sortedIds}
+        strategy={disableSorting ? undefined : verticalListSortingStrategy}
+      >
         {flattenedItems.map((item) => (
           <SortableTreeItem
             key={item.id}
@@ -195,6 +201,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
               item.id === activeId && projected ? projected.parent : item.parent
             }
             TreeItemComponent={TreeItemComponent}
+            disableSorting={disableSorting}
           />
         ))}
         {createPortal(

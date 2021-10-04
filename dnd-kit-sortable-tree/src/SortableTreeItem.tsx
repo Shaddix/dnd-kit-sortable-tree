@@ -37,6 +37,7 @@ type SortableTreeItemProps<
 > = TreeItemProps<T> & {
   id: string;
   TreeItemComponent: TreeItemComponentType<T, TElement>;
+  disableSorting?: boolean;
 };
 
 export function SortableTreeItem<T, TElement extends HTMLElement>({
@@ -45,6 +46,7 @@ export function SortableTreeItem<T, TElement extends HTMLElement>({
   isLast,
   TreeItemComponent,
   parent,
+  disableSorting,
   ...props
 }: SortableTreeItemProps<T, TElement>) {
   const {
@@ -59,6 +61,7 @@ export function SortableTreeItem<T, TElement extends HTMLElement>({
   } = useSortable({
     id,
     animateLayoutChanges,
+    disabled: disableSorting,
   });
   const style: CSSProperties = {
     transform: CSS.Translate.toString(transform),

@@ -85,6 +85,7 @@ function App() {
     <div className="App">
       <SortableTree
         collapsible
+        disableSorting={true}
         indentationWidth={10}
         // removable
         items={items}

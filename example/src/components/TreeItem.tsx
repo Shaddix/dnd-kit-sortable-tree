@@ -17,9 +17,10 @@ export const TreeItem = forwardRef<
   const { childCount, clone, onRemove, item } = props;
 
   return (
-    <FolderTreeItemWrapper
+    <SimpleTreeItemWrapper
       {...props}
       ref={ref}
+      hideCollapseButton={true}
       // showDragHandle={true}
       // manualDrag={true}
     >
@@ -29,6 +30,6 @@ export const TreeItem = forwardRef<
       {clone && childCount && childCount > 1 ? (
         <span className={styles.Count}>{childCount}</span>
       ) : null}
-    </FolderTreeItemWrapper>
+    </SimpleTreeItemWrapper>
   );
 });
