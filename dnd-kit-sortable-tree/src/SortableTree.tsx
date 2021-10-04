@@ -157,7 +157,6 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
-  console.log('qw', projected?.depth);
   return (
     <DndContext
       announcements={announcements}

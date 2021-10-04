@@ -68,7 +68,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
         {props.manualDrag && props.showDragHandle && (
           <div className={'dnd-sortable-tree_folder_handle'} {...handleProps} />
         )}
-        {(!props.manualDrag || !props.hideCollapseButton) && onCollapse && (
+        {!props.manualDrag && !props.hideCollapseButton && onCollapse && (
           <button
             onClick={(e) => {
               e.preventDefault();
