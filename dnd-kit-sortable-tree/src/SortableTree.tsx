@@ -60,7 +60,6 @@ export type SortableTreeProps<TData, TElement extends HTMLElement> = {
   indentationWidth?: number;
   indicator?: boolean;
   removable?: boolean;
-  collapsible?: boolean;
   pointerSensorOptions?: PointerSensorOptions;
   disableSorting?: boolean;
 };
@@ -71,7 +70,6 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
   },
 };
 export function SortableTree<TreeItemData, TElement extends HTMLElement>({
-  collapsible,
   items,
   indicator,
   indentationWidth = 50,
@@ -189,9 +187,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
             indicator={indicator}
             collapsed={Boolean(item.collapsed && item.children?.length)}
             onCollapse={
-              collapsible && item.children?.length
-                ? () => handleCollapse(item.id)
-                : undefined
+              item.children?.length ? () => handleCollapse(item.id) : undefined
             }
             onRemove={removable ? () => handleRemove(item.id) : undefined}
             isLast={
