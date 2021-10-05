@@ -86,7 +86,6 @@ function App() {
       <SortableTree
         disableSorting
         indentationWidth={10}
-        // removable
         items={items}
         onItemsChanged={setItems}
         TreeItemComponent={TreeItem}

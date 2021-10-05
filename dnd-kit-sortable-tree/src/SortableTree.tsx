@@ -59,7 +59,6 @@ export type SortableTreeProps<TData, TElement extends HTMLElement> = {
   TreeItemComponent: TreeItemComponentType<TData, TElement>;
   indentationWidth?: number;
   indicator?: boolean;
-  removable?: boolean;
   pointerSensorOptions?: PointerSensorOptions;
   disableSorting?: boolean;
 };
@@ -73,7 +72,6 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
   items,
   indicator,
   indentationWidth = 50,
-  removable,
   onItemsChanged,
   TreeItemComponent,
   pointerSensorOptions,
@@ -157,7 +155,6 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
-  console.log('qwe', disableSorting);
   return (
     <DndContext
       announcements={announcements}
@@ -189,7 +186,7 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
             onCollapse={
               item.children?.length ? () => handleCollapse(item.id) : undefined
             }
-            onRemove={removable ? () => handleRemove(item.id) : undefined}
+            onRemove={() => handleRemove(item.id)}
             isLast={
               item.id === activeId && projected ? projected.isLast : item.isLast
             }
