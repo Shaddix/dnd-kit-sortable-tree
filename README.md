@@ -6,7 +6,6 @@ This is a Tree component extracted from [dndkit](https://github.com/clauderic/dn
 
     npm install dnd-kit-sortable-tree
 
-
 ## How-to use
 
 Instructions will follow

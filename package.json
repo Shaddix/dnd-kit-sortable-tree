@@ -1,29 +1,102 @@
 {
-  "private": true,
-  "workspaces": [
-    "dnd-kit-sortable-tree",
-    "example"
+  "name": "dnd-kit-sortable-tree",
+  "version": "0.1.27",
+  "license": "MIT",
+  "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "Readme.MD"
   ],
-  "nohoist": [
-    "**/node-sass",
-    "**/node-sass/**",
-    "**/jest",
-    "**/jest/**"
+  "author": "Shaddix",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "tree",
+    "dndkit",
+    "react",
+    "typescript"
   ],
-  "scripts": {
-    "start": "rimraf \"dnd-kit-sortable-tree/dist\" && concurrently \"yarn lib watch\" \"wait-on dnd-kit-sortable-tree/dist/index.js && yarn example start\"",
-    "typecheck": "yarn lib build && yarn example typecheck",
-    "lib-publish": "yarn lib version patch && yarn lib npm publish",
-    "lib": "yarn workspace dnd-kit-sortable-tree",
-    "example": "yarn workspace example"
+  "engines": {
+    "node": ">=10"
   },
-  "devDependencies": {
-    "concurrently": "^5.2.0",
-    "cross-env": "^7.0.2",
-    "tsdx": "^0.14.1"
+  "scripts": {
+    "storybook": "start-storybook -p 6016",
+    "typecheck": "tsdx build",
+    "publish": "yarn version patch && yarn build",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "rimraf": "^3.0.2",
-    "wait-on": "^6.0.0"
+    "@dnd-kit/core": "^4.0.0",
+    "@dnd-kit/sortable": "^5.0.0",
+    "@dnd-kit/utilities": "^3.0.0",
+    "clsx": "^1.1.1",
+    "react-merge-refs": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@dnd-kit/core": "^4.0.3",
+    "@dnd-kit/sortable": "^5.1.0",
+    "@dnd-kit/utilities": "^3.0.1",
+    "react": ">=16",
+    "react-dom": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "module": "dist/mylib.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/mylib.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mylib.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@size-limit/preset-small-lib": "^7.0.3",
+    "@storybook/addon-essentials": "^6.4.0",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.4.0",
+    "@storybook/addons": "^6.4.0",
+    "@storybook/react": "^6.4.0",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "autoprefixer": "^10.3.4",
+    "babel-loader": "^8.2.3",
+    "copyfiles": "^2.3.0",
+    "cssnano": "^5.0.8",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "postcss": "^8.3.6",
+    "prettier": "2.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "rollup-plugin-postcss": "^4.0.1",
+    "size-limit": "^7.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2"
   }
 }
