@@ -11,7 +11,7 @@ import {
   DragOverlay,
   DragStartEvent,
   DropAnimation,
-  KeyboardSensor,
+  // KeyboardSensor,
   Modifier,
   PointerSensor,
   PointerSensorOptions,
@@ -39,7 +39,7 @@ import type {
   TreeItemComponentType,
   TreeItems,
 } from './types';
-import { sortableTreeKeyboardCoordinates } from './keyboardCoordinates';
+// import { sortableTreeKeyboardCoordinates } from './keyboardCoordinates';
 import { SortableTreeItem } from './SortableTreeItem';
 
 // const measuring = {
@@ -111,17 +111,17 @@ export function SortableTree<TreeItemData, TElement extends HTMLElement>({
     items: flattenedItems,
     offset: offsetLeft,
   });
-  const [coordinateGetter] = useState(() =>
-    sortableTreeKeyboardCoordinates(sensorContext, indentationWidth)
-  );
+  // const [coordinateGetter] = useState(() =>
+  //   sortableTreeKeyboardCoordinates(sensorContext, indentationWidth)
+  // );
   const sensors = useSensors(
     useSensor(
       PointerSensor,
       pointerSensorOptions ?? defaultPointerSensorOptions
-    ),
-    useSensor(KeyboardSensor, {
-      coordinateGetter,
-    })
+    )
+    // useSensor(KeyboardSensor, {
+    //   coordinateGetter,
+    // })
   );
 
   const sortedIds = useMemo(

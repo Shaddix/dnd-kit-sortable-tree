@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SortableTree, TreeItems } from '../../../src';
 import { FolderTreeItem } from './FolderTreeItem';
+import { TreeItemData } from '../TreeItemData';
 
 export const initialItems: TreeItems<TreeItemData> = [
   {

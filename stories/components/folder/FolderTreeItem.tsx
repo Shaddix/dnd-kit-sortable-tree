@@ -1,6 +1,6 @@
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import React, { forwardRef } from 'react';
-// import styles from './FolderTreeItem.module.scss';
+import styles from './FolderTreeItem.module.scss';
 import type { TreeItemComponentProps } from '../../../src';
 import { FolderTreeItemWrapper } from '../../../src';
 import { TreeItemData } from '../TreeItemData';
@@ -19,17 +19,12 @@ export const FolderTreeItem = forwardRef<
       // showDragHandle={true}
       // manualDrag={true}
     >
-      {/*<span className={styles.Text}>{item.text}</span>*/}
-      {/*<span className={styles.Text}>{item.date.getDate()}</span>*/}
-      {/*{!clone && onRemove && <button onClick={onRemove}>X</button>}*/}
-      {/*{clone && childCount && childCount > 1 ? (*/}
-      {/*  <span className={styles.Count}>{childCount}</span>*/}
-      {/*) : null}*/}
-
-      <span>{item.text}</span>
-      <span>{item.date.getDate()}</span>
+      <span className={styles.Text}>{item.text}</span>
+      <span className={styles.Text}>{item.date.getDate()}</span>
       {!clone && onRemove && <button onClick={onRemove}>X</button>}
-      {clone && childCount && childCount > 1 ? <span>{childCount}</span> : null}
+      {clone && childCount && childCount > 1 ? (
+        <span className={styles.Count}>{childCount}</span>
+      ) : null}
     </FolderTreeItemWrapper>
   );
 });

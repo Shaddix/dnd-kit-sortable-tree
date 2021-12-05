@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-// import styles from './TreeItem.module.scss';
+import styles from './TreeItem.module.scss';
 import type { TreeItemComponentProps } from '../../../src';
 import { SimpleTreeItemWrapper } from '../../../src';
 import { TreeItemData } from '../TreeItemData';
@@ -18,14 +18,11 @@ export const TreeItem = forwardRef<
       showDragHandle={true}
       // manualDrag={true}
     >
-      {/*<span className={styles.Text}>{item.text}</span>*/}
-      {/*<span className={styles.Text}>{item.date.getDate()}</span>*/}
-      <span>{item.text}</span>
-      <span>{item.date.getDate()}</span>
+      <span className={styles.Text}>{item.text}</span>
+      <span className={styles.Text}>{item.date.getDate()}</span>
       {!clone && onRemove && <button onClick={onRemove}>X</button>}
       {clone && childCount && childCount > 1 ? (
-        // <span className={styles.Count}>{childCount}</span>
-        <span>{childCount}</span>
+        <span className={styles.Count}>{childCount}</span>
       ) : null}
     </SimpleTreeItemWrapper>
   );

@@ -273,3 +273,4 @@ __pycache__/
 /.yarn/*
 !/.yarn/plugins/
 /dnd-kit-sortable-tree/dist/
+/dist/
