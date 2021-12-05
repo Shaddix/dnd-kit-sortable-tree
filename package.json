@@ -1,6 +1,6 @@
 {
   "name": "dnd-kit-sortable-tree",
-  "version": "0.1.27",
+  "version": "0.1.29",
   "license": "MIT",
   "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6016",
     "typecheck": "tsc --skipLibCheck",
-    "publish": "yarn version patch && yarn build",
+    "do-publish": "yarn version patch && yarn build && npm publish",
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",

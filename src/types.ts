@@ -16,8 +16,8 @@ export type TreeItem<T> = {
   canHaveChildren?: boolean;
 } & T;
 
-export type TreeItems<T> = TreeItem<T>[];
-export type TreeItemComponentProps<T> = {
+export type TreeItems<T extends Record<string, any>> = TreeItem<T>[];
+export type TreeItemComponentProps<T = {}> = {
   item: TreeItem<T>;
   parent: FlattenedItem<T> | null;
 

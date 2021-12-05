@@ -68,10 +68,13 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
     tolerance: 5,
   },
 };
-export function SortableTree<TreeItemData, TElement extends HTMLElement>({
+export function SortableTree<
+  TreeItemData,
+  TElement extends HTMLElement = HTMLDivElement
+>({
   items,
   indicator,
-  indentationWidth = 50,
+  indentationWidth = 20,
   onItemsChanged,
   TreeItemComponent,
   pointerSensorOptions,
