@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import styles from './TreeItem.module.scss';
+import styles from './TreeItem.module.css';
 import type { TreeItemComponentProps } from '../../../src';
 import { SimpleTreeItemWrapper } from '../../../src';
 import { TreeItemData } from '../TreeItemData';

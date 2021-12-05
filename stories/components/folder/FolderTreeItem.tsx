@@ -1,6 +1,6 @@
 // import clsx from 'clsx';
 import React, { forwardRef } from 'react';
-import styles from './FolderTreeItem.module.scss';
+import styles from './FolderTreeItem.module.css';
 import type { TreeItemComponentProps } from '../../../src';
 import { FolderTreeItemWrapper } from '../../../src';
 import { TreeItemData } from '../TreeItemData';

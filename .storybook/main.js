@@ -12,12 +12,33 @@ module.exports = {
         },
       },
     },
+    {
+      name: `@storybook/preset-scss`,
+      options: {
+        rule: {
+          test: /(?<!\.module).css$/,
+        },
+      },
+    },
     // module
     {
       name: `@storybook/preset-scss`,
       options: {
         rule: {
           test: /\.module\.s[ca]ss$/,
+        },
+        cssLoaderOptions: {
+          modules: {
+            localIdentName: '[name]__[local]--[hash:base64:5]',
+          },
+        },
+      },
+    },
+    {
+      name: `@storybook/preset-scss`,
+      options: {
+        rule: {
+          test: /\.module\.css$/,
         },
         cssLoaderOptions: {
           modules: {

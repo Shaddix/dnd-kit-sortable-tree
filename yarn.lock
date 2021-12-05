@@ -3462,7 +3462,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:^6.4.0":
+"@storybook/react@npm:^6.4.7":
   version: 6.4.7
   resolution: "@storybook/react@npm:6.4.7"
   dependencies:
@@ -7340,7 +7340,7 @@ __metadata:
     "@storybook/addon-links": ^6.4.0
     "@storybook/addons": ^6.4.0
     "@storybook/preset-scss": ^1.0.3
-    "@storybook/react": ^6.4.0
+    "@storybook/react": ^6.4.7
     "@types/react": ^17.0.3
     "@types/react-dom": ^17.0.3
     "@typescript-eslint/eslint-plugin": ^5.5.0
@@ -14405,7 +14405,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.5.0, prettier@npm:^2.2.1":
+"prettier@npm:2.5.0":
   version: 2.5.0
   resolution: "prettier@npm:2.5.0"
   bin:
@@ -14420,6 +14420,15 @@ fsevents@^1.2.7:
   bin:
     prettier: ./bin-prettier.js
   checksum: bc78219e0f8173a808f4c6c8e0a137dd8ebd4fbe013e63fe1a37a82b48612f17b8ae8e18a992adf802ee2cf7428f14f084e7c2846ca5759cf4013c6e54810e1f
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.2.1":
+  version: 2.5.1
+  resolution: "prettier@npm:2.5.1"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
   languageName: node
   linkType: hard
 
