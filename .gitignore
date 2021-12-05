@@ -274,3 +274,4 @@ __pycache__/
 !/.yarn/plugins/
 /dnd-kit-sortable-tree/dist/
 /dist/
+/storybook-static/
