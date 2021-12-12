@@ -1,1 +1,4 @@
 .storybook/main.js
+storybook-static
+dist
+.yarn

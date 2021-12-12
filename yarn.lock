@@ -3406,17 +3406,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/preset-scss@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@storybook/preset-scss@npm:1.0.3"
-  peerDependencies:
-    css-loader: "*"
-    sass-loader: "*"
-    style-loader: "*"
-  checksum: 4f1cf1f57a4cd277d76afad5fc4f677436dc3ae3753ce549a6395c0aa9f3d9cf58e9d04c7f8b2cccd2e01929ae563764cca03c016c7e3fed4044a6409e8ca8cd
-  languageName: node
-  linkType: hard
-
 "@storybook/preview-web@npm:6.4.7":
   version: 6.4.7
   resolution: "@storybook/preview-web@npm:6.4.7"
@@ -6098,25 +6087,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.4.1, chokidar@npm:^3.4.2, chokidar@npm:^3.5.2":
-  version: 3.5.2
-  resolution: "chokidar@npm:3.5.2"
-  dependencies:
-    anymatch: ~3.1.2
-    braces: ~3.0.2
-    fsevents: ~2.3.2
-    glob-parent: ~5.1.2
-    is-binary-path: ~2.1.0
-    is-glob: ~4.0.1
-    normalize-path: ~3.0.0
-    readdirp: ~3.6.0
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  checksum: d1fda32fcd67d9f6170a8468ad2630a3c6194949c9db3f6a91b16478c328b2800f433fb5d2592511b6cb145a47c013ea1cce60b432b1a001ae3ee978a8bffc2d
-  languageName: node
-  linkType: hard
-
 "chokidar@npm:^2.1.8":
   version: 2.1.8
   resolution: "chokidar@npm:2.1.8"
@@ -6137,6 +6107,25 @@ __metadata:
     fsevents:
       optional: true
   checksum: 0c43e89cbf0268ef1e1f41ce8ec5233c7ba022c6f3282c2ef6530e351d42396d389a1148c5a040f291cf1f4083a4c6b2f51dad3f31c726442ea9a337de316bcf
+  languageName: node
+  linkType: hard
+
+"chokidar@npm:^3.4.1, chokidar@npm:^3.4.2, chokidar@npm:^3.5.2":
+  version: 3.5.2
+  resolution: "chokidar@npm:3.5.2"
+  dependencies:
+    anymatch: ~3.1.2
+    braces: ~3.0.2
+    fsevents: ~2.3.2
+    glob-parent: ~5.1.2
+    is-binary-path: ~2.1.0
+    is-glob: ~4.0.1
+    normalize-path: ~3.0.0
+    readdirp: ~3.6.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: d1fda32fcd67d9f6170a8468ad2630a3c6194949c9db3f6a91b16478c328b2800f433fb5d2592511b6cb145a47c013ea1cce60b432b1a001ae3ee978a8bffc2d
   languageName: node
   linkType: hard
 
@@ -7339,7 +7328,6 @@ __metadata:
     "@storybook/addon-info": ^5.3.21
     "@storybook/addon-links": ^6.4.0
     "@storybook/addons": ^6.4.0
-    "@storybook/preset-scss": ^1.0.3
     "@storybook/react": ^6.4.7
     "@types/react": ^17.0.3
     "@types/react-dom": ^17.0.3
@@ -7353,15 +7341,13 @@ __metadata:
     eslint-config-react-app: ^6.0.0
     eslint-plugin-prettier: ^4.0.0
     husky: ^7.0.4
-    postcss: ^8.3.6
+    postcss: ^8.4.4
     prettier: 2.5.0
     react: ^17.0.2
     react-dom: ^17.0.2
     react-is: ^17.0.2
     react-merge-refs: ^1.1.0
     rollup-plugin-postcss: ^4.0.2
-    sass: ^1.44.0
-    sass-loader: ^10
     size-limit: ^7.0.3
     tsdx: ^0.14.1
     tslib: ^2.3.1
@@ -10121,9 +10107,9 @@ fsevents@^1.2.7:
   linkType: hard
 
 "humanize-duration@npm:^3.15.3":
-  version: 3.27.0
-  resolution: "humanize-duration@npm:3.27.0"
-  checksum: db34111b391056bd0da8d6a3cc965ee52c2de497892c85f16d5559529232924dfabd8f3c4210135fbd12d0cea7da34dade05accc14ef69f2cba758ff4b4bbd3d
+  version: 3.27.1
+  resolution: "humanize-duration@npm:3.27.1"
+  checksum: dad9f1a1367e6da9ca7568629e689e66c1b28206ff72096b51c6963fd7319f660073201fdb9bd5349427b9ea7c0d5cdf33e787c157cf30f996eaec4795029c30
   languageName: node
   linkType: hard
 
@@ -10220,13 +10206,6 @@ fsevents@^1.2.7:
   version: 8.0.1
   resolution: "immer@npm:8.0.1"
   checksum: 63d875c04882b862481a0a692816e5982975a47a57619698bc1bb52963ad3b624911991708b2b81a7af6fdac15083d408e43932d83a6a61216e5a4503efd4095
-  languageName: node
-  linkType: hard
-
-"immutable@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "immutable@npm:4.0.0"
-  checksum: 4b5e9181e4d5fa06728a481835ec09c86367e5d03268666c95b522b7644ab891098022e4479a43c4c81a68f2ed82f10751ce5d33e208d7b873b6e7f9dfaf4d87
   languageName: node
   linkType: hard
 
@@ -12802,12 +12781,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"nanospinner@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "nanospinner@npm:0.4.0"
+"nanospinner@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "nanospinner@npm:0.5.0"
   dependencies:
     picocolors: ^1.0.0
-  checksum: 7eecf6bcced0ba798797f992b16d91e2642d500a6f28169c875aaf15438b57fb331be607c298715eb7fc6255d24e0f08e3e502b8ea79311718011b748369189d
+  checksum: 21dedc1abbda7019158834e6a7f9eec5486c34df599b82c533e2c4dd59e42f41fbee0629457aea295e5a5ab00c15bfff469d55ddefdea6806b3fc80f38db4deb
   languageName: node
   linkType: hard
 
@@ -12825,7 +12804,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"neo-async@npm:^2.5.0, neo-async@npm:^2.6.0, neo-async@npm:^2.6.1, neo-async@npm:^2.6.2":
+"neo-async@npm:^2.5.0, neo-async@npm:^2.6.0, neo-async@npm:^2.6.1":
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: deac9f8d00eda7b2e5cd1b2549e26e10a0faa70adaa6fdadca701cc55f49ee9018e427f424bac0c790b7c7e2d3068db97f3093f1093975f2acb8f8818b936ed9
@@ -14378,7 +14357,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.3.6":
+"postcss@npm:^8.4.4":
   version: 8.4.4
   resolution: "postcss@npm:8.4.4"
   dependencies:
@@ -16030,43 +16009,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^10":
-  version: 10.2.0
-  resolution: "sass-loader@npm:10.2.0"
-  dependencies:
-    klona: ^2.0.4
-    loader-utils: ^2.0.0
-    neo-async: ^2.6.2
-    schema-utils: ^3.0.0
-    semver: ^7.3.2
-  peerDependencies:
-    fibers: ">= 3.1.0"
-    node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0
-    sass: ^1.3.0
-    webpack: ^4.36.0 || ^5.0.0
-  peerDependenciesMeta:
-    fibers:
-      optional: true
-    node-sass:
-      optional: true
-    sass:
-      optional: true
-  checksum: d53212e5d199cdd221a67046ab4276c352d56b50ca64347115b36e8ebbb2c68ec396a14d6cf5a08853c830a6b0ec1fd2b016cdc53cbe90a0332a908f50ec2043
-  languageName: node
-  linkType: hard
-
-"sass@npm:^1.44.0":
-  version: 1.44.0
-  resolution: "sass@npm:1.44.0"
-  dependencies:
-    chokidar: ">=3.0.0 <4.0.0"
-    immutable: ^4.0.0
-  bin:
-    sass: sass.js
-  checksum: 35b5b21ee5f9ca4012793052c203df0b4114f33b8c33bb4cba21c90d3141337a8a19e3ed934f2c783ace80a3534333c5248dc1a2f2e5ba45ce326591d3a08051
-  languageName: node
-  linkType: hard
-
 "saxes@npm:^3.1.9":
   version: 3.1.11
   resolution: "saxes@npm:3.1.11"
@@ -16429,8 +16371,8 @@ resolve@^2.0.0-next.3:
   linkType: hard
 
 "size-limit@npm:^7.0.3":
-  version: 7.0.3
-  resolution: "size-limit@npm:7.0.3"
+  version: 7.0.4
+  resolution: "size-limit@npm:7.0.4"
   dependencies:
     bytes-iec: ^3.1.1
     chokidar: ^3.5.2
@@ -16438,11 +16380,11 @@ resolve@^2.0.0-next.3:
     globby: ^11.0.4
     lilconfig: ^2.0.3
     mkdirp: ^1.0.4
-    nanospinner: ^0.4.0
+    nanospinner: ^0.5.0
     picocolors: ^1.0.0
   bin:
     size-limit: bin.js
-  checksum: cdf8edd4fd8ef4db305b726a175902db0e63fea47d72a99435174a7bea3a982d2689013e3ee09990b1ffcd3899533df5774ef5667b039e5015988c1d7901f386
+  checksum: 8902fe6f54140eba3611673d18b2724a65997badd2a0a41465296b45204c7221b8a9cad533162e0736acf07ea87b9f04566111a7864c0ffdab08a6bf910a996e
   languageName: node
   linkType: hard
 
