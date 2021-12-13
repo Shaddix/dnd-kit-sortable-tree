@@ -68,19 +68,22 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
         {props.manualDrag && props.showDragHandle && (
           <div className={'dnd-sortable-tree_folder_handle'} {...handleProps} />
         )}
-        {!props.manualDrag && !props.hideCollapseButton && onCollapse && (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onCollapse?.();
-            }}
-            className={clsx(
-              'dnd-sortable-tree_folder_tree-item-collapse_button',
-              collapsed &&
-                'dnd-sortable-tree_folder_tree-item-collapse_button-collapsed'
-            )}
-          />
-        )}
+        {!props.manualDrag &&
+          !props.hideCollapseButton &&
+          onCollapse &&
+          props.childCount && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onCollapse?.();
+              }}
+              className={clsx(
+                'dnd-sortable-tree_folder_tree-item-collapse_button',
+                collapsed &&
+                  'dnd-sortable-tree_folder_tree-item-collapse_button-collapsed'
+              )}
+            />
+          )}
         <div
           className={'dnd-sortable-tree_folder_tree-item'}
           ref={ref}

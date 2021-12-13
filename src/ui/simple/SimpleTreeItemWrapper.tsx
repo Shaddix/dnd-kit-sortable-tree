@@ -59,19 +59,22 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           onClick={disableCollapseOnItemClick ? undefined : props.onCollapse}
         >
           <div className={'dnd-sortable-tree_simple_handle'} {...handleProps} />
-          {!props.manualDrag && !props.hideCollapseButton && onCollapse && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                onCollapse?.();
-              }}
-              className={clsx(
-                'dnd-sortable-tree_simple_tree-item-collapse_button',
-                collapsed &&
-                  'dnd-sortable-tree_folder_simple-item-collapse_button-collapsed'
-              )}
-            />
-          )}
+          {!props.manualDrag &&
+            !props.hideCollapseButton &&
+            onCollapse &&
+            props.childCount && (
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onCollapse?.();
+                }}
+                className={clsx(
+                  'dnd-sortable-tree_simple_tree-item-collapse_button',
+                  collapsed &&
+                    'dnd-sortable-tree_folder_simple-item-collapse_button-collapsed'
+                )}
+              />
+            )}
           {props.children}
         </div>
       </li>

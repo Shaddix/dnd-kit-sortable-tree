@@ -1611,7 +1611,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/core@npm:^4.0.0":
+"@dnd-kit/core@npm:^4.0.3":
   version: 4.0.3
   resolution: "@dnd-kit/core@npm:4.0.3"
   dependencies:
@@ -1625,7 +1625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/sortable@npm:^5.0.0":
+"@dnd-kit/sortable@npm:^5.1.0":
   version: 5.1.0
   resolution: "@dnd-kit/sortable@npm:5.1.0"
   dependencies:
@@ -7320,9 +7320,9 @@ __metadata:
   resolution: "dnd-kit-sortable-tree@workspace:."
   dependencies:
     "@babel/core": ^7.16.0
-    "@dnd-kit/core": ^4.0.0
-    "@dnd-kit/sortable": ^5.0.0
-    "@dnd-kit/utilities": ^3.0.0
+    "@dnd-kit/core": ^4.0.3
+    "@dnd-kit/sortable": ^5.1.0
+    "@dnd-kit/utilities": ^3.0.1
     "@size-limit/preset-small-lib": ^7.0.3
     "@storybook/addon-essentials": ^6.4.0
     "@storybook/addon-info": ^5.3.21
