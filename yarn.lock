@@ -1649,6 +1649,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dnd-kit/utilities@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@dnd-kit/utilities@npm:3.0.2"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 929be05e28cd61bd802f84e50ec7e4fa3fc66e25062b7dafd578c31810608f067a85fbb2b193c323723e51202b6afcd07e10e09f2172678fa0d7d257bc95e2b0
+  languageName: node
+  linkType: hard
+
 "@emotion/cache@npm:^10.0.27":
   version: 10.0.29
   resolution: "@emotion/cache@npm:10.0.29"
@@ -4481,6 +4492,17 @@ __metadata:
     "@webassemblyjs/wast-parser": 1.9.0
     "@xtuc/long": 4.2.2
   checksum: 3d1e1b2e84745a963f69acd1c02425b321dd2e608e11dabc467cae0c9a808962bc769ec9afc46fbcea7188cc1e47d72370da762d258f716fb367cb1a7865c54b
+  languageName: node
+  linkType: hard
+
+"@welldone-software/why-did-you-render@npm:^6.2.3":
+  version: 6.2.3
+  resolution: "@welldone-software/why-did-you-render@npm:6.2.3"
+  dependencies:
+    lodash: ^4
+  peerDependencies:
+    react: ^16 || ^17
+  checksum: 6c012f0a67c94c19cd2e8221438d547990a26b0593b0d1e8fd57084253d7cd305f4904e5bda984fd38416390b35b95fb0c3631fa485bd41b0b317568f080376c
   languageName: node
   linkType: hard
 
@@ -7322,7 +7344,7 @@ __metadata:
     "@babel/core": ^7.16.0
     "@dnd-kit/core": ^4.0.3
     "@dnd-kit/sortable": ^5.1.0
-    "@dnd-kit/utilities": ^3.0.1
+    "@dnd-kit/utilities": ^3.0.2
     "@size-limit/preset-small-lib": ^7.0.3
     "@storybook/addon-essentials": ^6.4.0
     "@storybook/addon-info": ^5.3.21
@@ -7333,6 +7355,7 @@ __metadata:
     "@types/react-dom": ^17.0.3
     "@typescript-eslint/eslint-plugin": ^5.5.0
     "@typescript-eslint/parser": ^5.5.0
+    "@welldone-software/why-did-you-render": ^6.2.3
     autoprefixer: ^10.4.0
     babel-loader: ^8.2.3
     clsx: ^1.1.1
@@ -12054,7 +12077,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21":
+"lodash@npm:^4, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7

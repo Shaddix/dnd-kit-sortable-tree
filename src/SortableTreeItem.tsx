@@ -1,4 +1,4 @@
-import React, { CSSProperties, HTMLAttributes } from 'react';
+import React, { CSSProperties, HTMLAttributes, useCallback } from 'react';
 import { AnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -19,9 +19,9 @@ export interface TreeItemProps<T> extends HTMLAttributes<HTMLLIElement> {
   item: TreeItem<T>;
   isLast: boolean;
   parent: FlattenedItem<T> | null;
-  onCollapse?(): void;
+  onCollapse?(id: string): void;
 
-  onRemove?(): void;
+  onRemove?(id: string): void;
 
   wrapperRef?(node: HTMLLIElement): void;
 }
@@ -40,7 +40,10 @@ type SortableTreeItemProps<
   disableSorting?: boolean;
 };
 
-export function SortableTreeItem<T, TElement extends HTMLElement>({
+export const SortableTreeItem = function SortableTreeItem<
+  T,
+  TElement extends HTMLElement
+>({
   id,
   depth,
   isLast,
@@ -67,6 +70,12 @@ export function SortableTreeItem<T, TElement extends HTMLElement>({
     transform: CSS.Translate.toString(transform),
     transition: transition ?? undefined,
   };
+  const localCollapse = useCallback(() => {
+    props.onCollapse?.(props.item.id);
+  }, [props.item.id, props.onCollapse]);
+  const localRemove = useCallback(() => {
+    props.onRemove?.(props.item.id);
+  }, [props.item.id, props.onCollapse]);
 
   return (
     <TreeItemComponent
@@ -84,6 +93,8 @@ export function SortableTreeItem<T, TElement extends HTMLElement>({
         ...attributes,
         ...listeners,
       }}
+      onCollapse={localCollapse}
+      onRemove={localRemove}
     />
   );
-}
+};

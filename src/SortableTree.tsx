@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 import {
   Announcements,
@@ -66,6 +72,7 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
     delay: 100,
     tolerance: 5,
+    distance: 10,
   },
 };
 export function SortableTree<
@@ -90,6 +97,7 @@ export function SortableTree<
   } | null>(null);
 
   const flattenedItems = useMemo(() => {
+    console.log('flattened items recalculate');
     const flattenedTree = flattenTree(items);
     const collapsedItems = flattenedTree.reduce<string[]>(
       (acc, { children, collapsed, id }) =>
@@ -159,11 +167,12 @@ export function SortableTree<
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
+  console.log('rerednre root');
   return (
     <DndContext
       announcements={announcements}
       sensors={disableSorting ? undefined : sensors}
-      modifiers={indicator ? [adjustTranslate] : undefined}
+      modifiers={indicator ? modifiersArray : undefined}
       collisionDetection={closestCenter}
       // measuring={measuring}
       onDragStart={disableSorting ? undefined : handleDragStart}
@@ -188,10 +197,8 @@ export function SortableTree<
             indentationWidth={indentationWidth}
             indicator={indicator}
             collapsed={Boolean(item.collapsed && item.children?.length)}
-            onCollapse={
-              item.children?.length ? () => handleCollapse(item.id) : undefined
-            }
-            onRemove={() => handleRemove(item.id)}
+            onCollapse={item.children?.length ? handleCollapse : undefined}
+            onRemove={handleRemove}
             isLast={
               item.id === activeId && projected ? projected.isLast : item.isLast
             }
@@ -278,17 +285,23 @@ export function SortableTree<
     document.body.style.setProperty('cursor', '');
   }
 
-  function handleRemove(id: string) {
-    onItemsChanged(removeItem(items, id));
-  }
+  const handleRemove = useCallback(
+    (id: string) => {
+      onItemsChanged(removeItem(items, id));
+    },
+    [onItemsChanged]
+  );
 
-  function handleCollapse(id: string) {
-    onItemsChanged(
-      setProperty(items, id, 'collapsed', ((value: boolean) => {
-        return !value;
-      }) as any)
-    );
-  }
+  const handleCollapse = useCallback(
+    function handleCollapse(id: string) {
+      onItemsChanged(
+        setProperty(items, id, 'collapsed', ((value: boolean) => {
+          return !value;
+        }) as any)
+      );
+    },
+    [onItemsChanged]
+  );
 
   function getMovementAnnouncement(
     eventName: string,
@@ -355,3 +368,4 @@ const adjustTranslate: Modifier = ({ transform }) => {
     y: transform.y - 25,
   };
 };
+const modifiersArray = [adjustTranslate];
