@@ -40,7 +40,7 @@ type SortableTreeItemProps<
   disableSorting?: boolean;
 };
 
-export const SortableTreeItem = function SortableTreeItem<
+const SortableTreeItemNotMemoized = function SortableTreeItem<
   T,
   TElement extends HTMLElement
 >({
@@ -98,3 +98,7 @@ export const SortableTreeItem = function SortableTreeItem<
     />
   );
 };
+
+export const SortableTreeItem = React.memo(
+  SortableTreeItemNotMemoized
+) as typeof SortableTreeItemNotMemoized;
