@@ -164,9 +164,11 @@ export function SortableTree<
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
+  const itemsRef = useRef(items);
+  itemsRef.current = items;
   const handleRemove = useCallback(
     (id: string) => {
-      onItemsChanged(removeItem(items, id));
+      onItemsChanged(removeItem(itemsRef.current, id));
     },
     [onItemsChanged]
   );
@@ -174,7 +176,7 @@ export function SortableTree<
   const handleCollapse = useCallback(
     function handleCollapse(id: string) {
       onItemsChanged(
-        setProperty(items, id, 'collapsed', ((value: boolean) => {
+        setProperty(itemsRef.current, id, 'collapsed', ((value: boolean) => {
           return !value;
         }) as any)
       );
