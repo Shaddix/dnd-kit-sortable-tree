@@ -70,8 +70,8 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
         )}
         {!props.manualDrag &&
           !props.hideCollapseButton &&
-          onCollapse &&
-          props.childCount && (
+          !!onCollapse &&
+          !!props.childCount && (
             <button
               onClick={(e) => {
                 e.preventDefault();

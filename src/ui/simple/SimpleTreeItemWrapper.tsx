@@ -61,8 +61,8 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           <div className={'dnd-sortable-tree_simple_handle'} {...handleProps} />
           {!props.manualDrag &&
             !props.hideCollapseButton &&
-            onCollapse &&
-            props.childCount && (
+            !!onCollapse &&
+            !!props.childCount && (
               <button
                 onClick={(e) => {
                   e.preventDefault();

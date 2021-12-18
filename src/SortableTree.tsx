@@ -191,6 +191,7 @@ export function SortableTree<
             key={item.id}
             id={item.id}
             item={item}
+            childCount={item.children?.length}
             depth={
               item.id === activeId && projected ? projected.depth : item.depth
             }
