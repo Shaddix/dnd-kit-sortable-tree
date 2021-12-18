@@ -70,8 +70,6 @@ export type SortableTreeProps<TData, TElement extends HTMLElement> = {
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
-    delay: 100,
-    tolerance: 5,
     distance: 10,
   },
 };
@@ -97,7 +95,6 @@ export function SortableTree<
   } | null>(null);
 
   const flattenedItems = useMemo(() => {
-    console.log('flattened items recalculate');
     const flattenedTree = flattenTree(items);
     const collapsedItems = flattenedTree.reduce<string[]>(
       (acc, { children, collapsed, id }) =>
@@ -167,7 +164,24 @@ export function SortableTree<
       return `Moving was cancelled. ${id} was dropped in its original position.`;
     },
   };
-  console.log('rerednre root');
+  const handleRemove = useCallback(
+    (id: string) => {
+      onItemsChanged(removeItem(items, id));
+    },
+    [onItemsChanged]
+  );
+
+  const handleCollapse = useCallback(
+    function handleCollapse(id: string) {
+      onItemsChanged(
+        setProperty(items, id, 'collapsed', ((value: boolean) => {
+          return !value;
+        }) as any)
+      );
+    },
+    [onItemsChanged]
+  );
+
   return (
     <DndContext
       announcements={announcements}
@@ -185,31 +199,37 @@ export function SortableTree<
         items={sortedIds}
         strategy={disableSorting ? undefined : verticalListSortingStrategy}
       >
-        {flattenedItems.map((item) => (
-          <SortableTreeItem
-            {...rest}
-            key={item.id}
-            id={item.id}
-            item={item}
-            childCount={item.children?.length}
-            depth={
-              item.id === activeId && projected ? projected.depth : item.depth
-            }
-            indentationWidth={indentationWidth}
-            indicator={indicator}
-            collapsed={Boolean(item.collapsed && item.children?.length)}
-            onCollapse={item.children?.length ? handleCollapse : undefined}
-            onRemove={handleRemove}
-            isLast={
-              item.id === activeId && projected ? projected.isLast : item.isLast
-            }
-            parent={
-              item.id === activeId && projected ? projected.parent : item.parent
-            }
-            TreeItemComponent={TreeItemComponent}
-            disableSorting={disableSorting}
-          />
-        ))}
+        {flattenedItems.map((item) => {
+          return (
+            <SortableTreeItem
+              {...rest}
+              key={item.id}
+              id={item.id}
+              item={item}
+              childCount={item.children?.length}
+              depth={
+                item.id === activeId && projected ? projected.depth : item.depth
+              }
+              indentationWidth={indentationWidth}
+              indicator={indicator}
+              collapsed={Boolean(item.collapsed && item.children?.length)}
+              onCollapse={item.children?.length ? handleCollapse : undefined}
+              onRemove={handleRemove}
+              isLast={
+                item.id === activeId && projected
+                  ? projected.isLast
+                  : item.isLast
+              }
+              parent={
+                item.id === activeId && projected
+                  ? projected.parent
+                  : item.parent
+              }
+              TreeItemComponent={TreeItemComponent}
+              disableSorting={disableSorting}
+            />
+          );
+        })}
         {createPortal(
           <DragOverlay dropAnimation={dropAnimation}>
             {activeId && activeItem ? (
@@ -285,24 +305,6 @@ export function SortableTree<
 
     document.body.style.setProperty('cursor', '');
   }
-
-  const handleRemove = useCallback(
-    (id: string) => {
-      onItemsChanged(removeItem(items, id));
-    },
-    [onItemsChanged]
-  );
-
-  const handleCollapse = useCallback(
-    function handleCollapse(id: string) {
-      onItemsChanged(
-        setProperty(items, id, 'collapsed', ((value: boolean) => {
-          return !value;
-        }) as any)
-      );
-    },
-    [onItemsChanged]
-  );
 
   function getMovementAnnouncement(
     eventName: string,

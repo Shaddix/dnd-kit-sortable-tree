@@ -26,12 +26,7 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       ...rest
     } = props;
 
-    const disableCollapseOnItemClick =
-      props.disableCollapseOnItemClick === undefined
-        ? props.hideCollapseButton
-          ? false
-          : true
-        : props.disableCollapseOnItemClick;
+    const disableCollapseOnItemClick = !!props.disableCollapseOnItemClick;
     return (
       <li
         className={clsx(
@@ -65,6 +60,9 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
             !!props.childCount && (
               <button
                 onClick={(e) => {
+                  if (!disableCollapseOnItemClick) {
+                    return;
+                  }
                   e.preventDefault();
                   onCollapse?.();
                 }}

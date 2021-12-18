@@ -11,13 +11,7 @@ export const TreeItem = forwardRef<
   const { childCount, clone, onRemove, item } = props;
 
   return (
-    <SimpleTreeItemWrapper
-      {...props}
-      ref={ref}
-      hideCollapseButton={true}
-      showDragHandle={true}
-      // manualDrag={true}
-    >
+    <SimpleTreeItemWrapper {...props} ref={ref}>
       <span className={styles.Text}>{item.text}</span>
       <span className={styles.Text}>{item.date.getDate()}</span>
       {!clone && onRemove && <button onClick={onRemove}>X</button>}

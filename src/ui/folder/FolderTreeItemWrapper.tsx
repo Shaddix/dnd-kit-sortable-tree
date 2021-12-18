@@ -35,6 +35,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       parent,
       ...rest
     } = props;
+
     const flattenedParents = flattenParents(parent);
     return (
       <li

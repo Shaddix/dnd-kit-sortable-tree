@@ -1,4 +1,4 @@
-import React, { CSSProperties, HTMLAttributes, useCallback } from 'react';
+import React, { CSSProperties, HTMLAttributes, useMemo } from 'react';
 import { AnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -70,12 +70,16 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
     transform: CSS.Translate.toString(transform),
     transition: transition ?? undefined,
   };
-  const localCollapse = useCallback(() => {
-    props.onCollapse?.(props.item.id);
+  const localCollapse = useMemo(() => {
+    if (!props.onCollapse) return undefined;
+    return () => props.onCollapse?.(props.item.id);
   }, [props.item.id, props.onCollapse]);
-  const localRemove = useCallback(() => {
-    props.onRemove?.(props.item.id);
-  }, [props.item.id, props.onCollapse]);
+
+  const localRemove = useMemo(() => {
+    if (!props.onRemove) return undefined;
+
+    return () => props.onRemove?.(props.item.id);
+  }, [props.item.id, props.onRemove]);
 
   return (
     <TreeItemComponent
