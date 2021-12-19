@@ -66,7 +66,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
               : 'dnd-sortable-tree_folder_line-to_self'
           }
         />
-        {props.manualDrag && props.showDragHandle && (
+        {props.manualDrag && props.showDragHandle && !props.disableSorting && (
           <div className={'dnd-sortable-tree_folder_handle'} {...handleProps} />
         )}
         {!props.manualDrag &&

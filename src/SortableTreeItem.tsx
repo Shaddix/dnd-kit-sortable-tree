@@ -80,7 +80,6 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
 
     return () => props.onRemove?.(props.item.id);
   }, [props.item.id, props.onRemove]);
-
   return (
     <TreeItemComponent
       {...props}
@@ -99,6 +98,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
       }}
       onCollapse={localCollapse}
       onRemove={localRemove}
+      disableSorting={disableSorting}
     />
   );
 };

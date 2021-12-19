@@ -43,17 +43,18 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           paddingLeft: clone ? indentationWidth : indentationWidth * depth,
         }}
       >
-        {props.manualDrag && props.showDragHandle && (
-          <div className={'dnd-sortable-tree_simple_handle'} {...handleProps} />
-        )}
-
         <div
           className={'dnd-sortable-tree_simple_tree-item'}
           ref={ref}
           {...(props.manualDrag ? undefined : handleProps)}
           onClick={disableCollapseOnItemClick ? undefined : props.onCollapse}
         >
-          <div className={'dnd-sortable-tree_simple_handle'} {...handleProps} />
+          {!props.disableSorting && props.showDragHandle !== false && (
+            <div
+              className={'dnd-sortable-tree_simple_handle'}
+              {...handleProps}
+            />
+          )}
           {!props.manualDrag &&
             !props.hideCollapseButton &&
             !!onCollapse &&

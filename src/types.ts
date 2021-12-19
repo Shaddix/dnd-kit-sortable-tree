@@ -62,6 +62,12 @@ export type TreeItemComponentProps<T = {}> = {
   So, it's true for all nodes that are NOT dragged (if some other is being dragged)
    */
   disableSelection?: boolean;
+
+  /*
+  Property is passed through from <SortableTree> props.
+  True if sorting is disabled (so, drag handle should not be shown)
+   */
+  disableSorting?: boolean;
   /*
   True if the item is the last one among it's parent children.
   Might be important for e.g. FolderTreeItemWrapper to show correct images.
