@@ -97,7 +97,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
         ...listeners,
       }}
       onCollapse={localCollapse}
-      onRemove={localRemove}
+      onRemove={(event) => {event.stopPropagation(); localRemove(); }}
       disableSorting={disableSorting}
     />
   );
