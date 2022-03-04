@@ -216,7 +216,7 @@ export function SortableTree<
               indicator={indicator}
               collapsed={Boolean(item.collapsed && item.children?.length)}
               onCollapse={item.children?.length ? handleCollapse : undefined}
-              onRemove={handleRemove}
+              onRemove={(event) => {event.stopPropagation(); handleRemove(); }}
               isLast={
                 item.id === activeId && projected
                   ? projected.isLast
