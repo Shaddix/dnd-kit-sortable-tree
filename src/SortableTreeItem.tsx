@@ -4,6 +4,7 @@ import { CSS } from '@dnd-kit/utilities';
 
 import { iOS } from './utilities';
 import type { FlattenedItem, TreeItem, TreeItemComponentType } from './types';
+import { UniqueIdentifier } from '@dnd-kit/core';
 
 export interface TreeItemProps<T> extends HTMLAttributes<HTMLLIElement> {
   childCount?: number;
@@ -19,9 +20,9 @@ export interface TreeItemProps<T> extends HTMLAttributes<HTMLLIElement> {
   item: TreeItem<T>;
   isLast: boolean;
   parent: FlattenedItem<T> | null;
-  onCollapse?(id: string): void;
+  onCollapse?(id: UniqueIdentifier): void;
 
-  onRemove?(id: string): void;
+  onRemove?(id: UniqueIdentifier): void;
 
   wrapperRef?(node: HTMLLIElement): void;
 }

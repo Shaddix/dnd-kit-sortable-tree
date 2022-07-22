@@ -95,7 +95,7 @@ export function SortableTree<
 
   const flattenedItems = useMemo(() => {
     const flattenedTree = flattenTree(items);
-    const collapsedItems = flattenedTree.reduce<string[]>(
+    const collapsedItems = flattenedTree.reduce<UniqueIdentifier[]>(
       (acc, { children, collapsed, id }) =>
         collapsed && children?.length ? [...acc, id] : acc,
       []
@@ -210,7 +210,7 @@ export function SortableTree<
               <SortableTreeItem
                 {...rest}
                 key={item.id}
-                id={item.id}
+                id={item.id?.toString()}
                 item={item}
                 childCount={item.children?.length}
                 depth={
@@ -357,7 +357,7 @@ export function SortableTree<
           let previousSibling: FlattenedItem<TreeItemData> | undefined =
             previousItem;
           while (previousSibling && projected.depth < previousSibling.depth) {
-            const parentId: string | null = previousSibling.parentId;
+            const parentId: UniqueIdentifier | null = previousSibling.parentId;
             previousSibling = sortedItems.find(({ id }) => id === parentId);
           }
 

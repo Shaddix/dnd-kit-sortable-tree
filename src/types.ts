@@ -1,8 +1,9 @@
 import type { MutableRefObject, RefAttributes } from 'react';
+import { UniqueIdentifier } from '@dnd-kit/core';
 
 export type TreeItem<T> = {
   children?: TreeItem<T>[];
-  id: string;
+  id: UniqueIdentifier;
   /*
   Default: false.
    */
@@ -116,7 +117,7 @@ export type TreeItemComponentType<T, TElement extends HTMLElement> = React.FC<
 >;
 
 export type FlattenedItem<T> = {
-  parentId: null | string;
+  parentId: UniqueIdentifier | null;
   /*
   How deep in the tree is current item.
   0 - means the item is on the Root level,

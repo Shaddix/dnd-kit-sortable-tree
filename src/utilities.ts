@@ -107,12 +107,12 @@ function getMinDepth<T>({ nextItem }: { nextItem: FlattenedItem<T> }) {
 
 function flatten<T>(
   items: TreeItems<T>,
-  parentId: string | null = null,
+  parentId: UniqueIdentifier | null = null,
   depth = 0,
   parent: FlattenedItem<T> | null = null
 ): FlattenedItem<T>[] {
   return items.reduce<FlattenedItem<T>[]>((acc, item, index) => {
-    const flattenedItem = {
+    const flattenedItem: FlattenedItem<T> = {
       ...item,
       parentId,
       depth,
@@ -149,7 +149,7 @@ export function buildTree<T>(flattenedItems: FlattenedItem<T>[]): TreeItems<T> {
   return root.children ?? [];
 }
 
-export function findItem<T>(items: TreeItem<T>[], itemId: string) {
+export function findItem<T>(items: TreeItem<T>[], itemId: UniqueIdentifier) {
   return items.find(({ id }) => id === itemId);
 }
 
