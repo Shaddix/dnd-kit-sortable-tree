@@ -1,6 +1,6 @@
 {
   "name": "dnd-kit-sortable-tree",
-  "version": "0.1.45",
+  "version": "0.1.46",
   "license": "MIT",
   "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
   "main": "dist/index.js",
@@ -58,14 +58,14 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/mylib.esm.js",
+  "module": "dist/dnd-kit-sortable-tree.esm.js",
   "size-limit": [
     {
-      "path": "dist/mylib.cjs.production.min.js",
+      "path": "dist/dnd-kit-sortable-tree.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/mylib.esm.js",
+      "path": "dist/dnd-kit-sortable-tree.esm.js",
       "limit": "10 KB"
     }
   ],
