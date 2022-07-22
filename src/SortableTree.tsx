@@ -204,55 +204,59 @@ export function SortableTree<
         items={sortedIds}
         strategy={disableSorting ? undefined : verticalListSortingStrategy}
       >
-        {flattenedItems.map((item) => {
-          return (
-            <SortableTreeItem
-              {...rest}
-              key={item.id}
-              id={item.id}
-              item={item}
-              childCount={item.children?.length}
-              depth={
-                item.id === activeId && projected ? projected.depth : item.depth
-              }
-              indentationWidth={indentationWidth}
-              indicator={indicator}
-              collapsed={Boolean(item.collapsed && item.children?.length)}
-              onCollapse={item.children?.length ? handleCollapse : undefined}
-              onRemove={handleRemove}
-              isLast={
-                item.id === activeId && projected
-                  ? projected.isLast
-                  : item.isLast
-              }
-              parent={
-                item.id === activeId && projected
-                  ? projected.parent
-                  : item.parent
-              }
-              TreeItemComponent={TreeItemComponent}
-              disableSorting={disableSorting}
-            />
-          );
-        })}
-        {createPortal(
-          <DragOverlay dropAnimation={dropAnimation}>
-            {activeId && activeItem ? (
-              <TreeItemComponent
+        <>
+          {flattenedItems.map((item) => {
+            return (
+              <SortableTreeItem
                 {...rest}
-                item={activeItem}
-                children={[]}
-                depth={activeItem.depth}
-                clone
-                childCount={getChildCount(items, activeId) + 1}
+                key={item.id}
+                id={item.id}
+                item={item}
+                childCount={item.children?.length}
+                depth={
+                  item.id === activeId && projected
+                    ? projected.depth
+                    : item.depth
+                }
                 indentationWidth={indentationWidth}
-                isLast={false}
-                parent={activeItem.parent}
+                indicator={indicator}
+                collapsed={Boolean(item.collapsed && item.children?.length)}
+                onCollapse={item.children?.length ? handleCollapse : undefined}
+                onRemove={handleRemove}
+                isLast={
+                  item.id === activeId && projected
+                    ? projected.isLast
+                    : item.isLast
+                }
+                parent={
+                  item.id === activeId && projected
+                    ? projected.parent
+                    : item.parent
+                }
+                TreeItemComponent={TreeItemComponent}
+                disableSorting={disableSorting}
               />
-            ) : null}
-          </DragOverlay>,
-          document.body
-        )}
+            );
+          })}
+          {createPortal(
+            <DragOverlay dropAnimation={dropAnimation}>
+              {activeId && activeItem ? (
+                <TreeItemComponent
+                  {...rest}
+                  item={activeItem}
+                  children={[]}
+                  depth={activeItem.depth}
+                  clone
+                  childCount={getChildCount(items, activeId) + 1}
+                  indentationWidth={indentationWidth}
+                  isLast={false}
+                  parent={activeItem.parent}
+                />
+              ) : null}
+            </DragOverlay>,
+            document.body
+          )}
+        </>
       </SortableContext>
     </DndContext>
   );

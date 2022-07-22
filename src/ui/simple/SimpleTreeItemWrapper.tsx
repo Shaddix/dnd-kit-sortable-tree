@@ -7,7 +7,10 @@ import type {
 import './SimpleTreeItemWrapper.css';
 
 export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
-  forwardRef<HTMLDivElement, TreeItemComponentProps<{}>>((props, ref) => {
+  forwardRef<
+    HTMLDivElement,
+    React.PropsWithChildren<TreeItemComponentProps<{}>>
+  >((props, ref) => {
     const {
       clone,
       depth,

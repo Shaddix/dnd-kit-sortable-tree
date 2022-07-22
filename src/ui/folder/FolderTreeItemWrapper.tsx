@@ -15,7 +15,10 @@ function flattenParents<T>(
 }
 
 export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
-  forwardRef<HTMLDivElement, TreeItemComponentProps<{}>>((props, ref) => {
+  forwardRef<
+    HTMLDivElement,
+    React.PropsWithChildren<TreeItemComponentProps<{}>>
+  >((props, ref) => {
     const {
       clone,
       depth,
