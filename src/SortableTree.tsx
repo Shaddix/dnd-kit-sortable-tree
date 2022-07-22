@@ -16,11 +16,11 @@ import {
   DragOverEvent,
   DragOverlay,
   DragStartEvent,
-  DropAnimation,
   // KeyboardSensor,
   Modifier,
   PointerSensor,
   PointerSensorOptions,
+  UniqueIdentifier,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
@@ -54,9 +54,8 @@ import { SortableTreeItem } from './SortableTreeItem';
 //   },
 // };
 
-const dropAnimation: DropAnimation = {
+const dropAnimation = {
   ...defaultDropAnimation,
-  dragSourceOpacity: 0.5,
 };
 
 export type SortableTreeProps<TData, TElement extends HTMLElement> = {
@@ -86,12 +85,12 @@ export function SortableTree<
   disableSorting,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const [overId, setOverId] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+  const [overId, setOverId] = useState<UniqueIdentifier | null>(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentPosition, setCurrentPosition] = useState<{
-    parentId: string | null;
-    overId: string;
+    parentId: UniqueIdentifier | null;
+    overId: UniqueIdentifier;
   } | null>(null);
 
   const flattenedItems = useMemo(() => {
@@ -147,23 +146,6 @@ export function SortableTree<
     };
   }, [flattenedItems, offsetLeft]);
 
-  const announcements: Announcements = {
-    onDragStart(id) {
-      return `Picked up ${id}.`;
-    },
-    onDragMove(id, overId) {
-      return getMovementAnnouncement('onDragMove', id, overId);
-    },
-    onDragOver(id, overId) {
-      return getMovementAnnouncement('onDragOver', id, overId);
-    },
-    onDragEnd(id, overId) {
-      return getMovementAnnouncement('onDragEnd', id, overId);
-    },
-    onDragCancel(id) {
-      return `Moving was cancelled. ${id} was dropped in its original position.`;
-    },
-  };
   const itemsRef = useRef(items);
   itemsRef.current = items;
   const handleRemove = useCallback(
@@ -184,9 +166,30 @@ export function SortableTree<
     [onItemsChanged]
   );
 
+  const announcements: Announcements = useMemo(
+    () => ({
+      onDragStart({ active }) {
+        return `Picked up ${active.id}.`;
+      },
+      onDragMove({ active, over }) {
+        return getMovementAnnouncement('onDragMove', active.id, over?.id);
+      },
+      onDragOver({ active, over }) {
+        return getMovementAnnouncement('onDragOver', active.id, over?.id);
+      },
+      onDragEnd({ active, over }) {
+        return getMovementAnnouncement('onDragEnd', active.id, over?.id);
+      },
+      onDragCancel({ active }) {
+        return `Moving was cancelled. ${active.id} was dropped in its original position.`;
+      },
+    }),
+    []
+  );
+
   return (
     <DndContext
-      announcements={announcements}
+      accessibility={{ announcements }}
       sensors={disableSorting ? undefined : sensors}
       modifiers={indicator ? modifiersArray : undefined}
       collisionDetection={closestCenter}
@@ -310,8 +313,8 @@ export function SortableTree<
 
   function getMovementAnnouncement(
     eventName: string,
-    activeId: string,
-    overId?: string
+    activeId: UniqueIdentifier,
+    overId?: UniqueIdentifier
   ) {
     if (overId && projected) {
       if (eventName !== 'onDragEnd') {

@@ -1,6 +1,7 @@
 import { arrayMove } from '@dnd-kit/sortable';
 
 import type { FlattenedItem, TreeItem, TreeItems } from './types';
+import { UniqueIdentifier } from '@dnd-kit/core';
 
 export const iOS = /iPad|iPhone|iPod/.test(navigator.platform);
 
@@ -11,8 +12,8 @@ function getDragDepth(offset: number, indentationWidth: number) {
 let _revertLastChanges = () => {};
 export function getProjection<T>(
   items: FlattenedItem<T>[],
-  activeId: string | null,
-  overId: string | null,
+  activeId: UniqueIdentifier | null,
+  overId: UniqueIdentifier | null,
   dragOffset: number,
   indentationWidth: number
 ) {
@@ -154,7 +155,7 @@ export function findItem<T>(items: TreeItem<T>[], itemId: string) {
 
 export function findItemDeep<T>(
   items: TreeItems<T>,
-  itemId: string
+  itemId: UniqueIdentifier
 ): TreeItem<T> | undefined {
   for (const item of items) {
     const { id, children } = item;
@@ -223,7 +224,7 @@ function countChildren<T>(items: TreeItem<T>[], count = 0): number {
   }, count);
 }
 
-export function getChildCount<T>(items: TreeItems<T>, id: string) {
+export function getChildCount<T>(items: TreeItems<T>, id: UniqueIdentifier) {
   if (!id) {
     return 0;
   }
@@ -233,7 +234,10 @@ export function getChildCount<T>(items: TreeItems<T>, id: string) {
   return item ? countChildren(item.children ?? []) : 0;
 }
 
-export function removeChildrenOf<T>(items: FlattenedItem<T>[], ids: string[]) {
+export function removeChildrenOf<T>(
+  items: FlattenedItem<T>[],
+  ids: UniqueIdentifier[]
+) {
   const excludeParentIds = [...ids];
 
   return items.filter((item) => {

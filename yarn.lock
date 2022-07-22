@@ -1611,52 +1611,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/core@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "@dnd-kit/core@npm:4.0.3"
+"@dnd-kit/core@npm:^6.0.5":
+  version: 6.0.5
+  resolution: "@dnd-kit/core@npm:6.0.5"
   dependencies:
     "@dnd-kit/accessibility": ^3.0.0
-    "@dnd-kit/utilities": ^3.0.1
+    "@dnd-kit/utilities": ^3.2.0
     tslib: ^2.0.0
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 828609317504f32bf37238840e5d2ae545efaaa779d696fdad1606d2ae22ae5668a43466db007efde89c8c1ef04ca66b2c61b6e98465f9487ec37c8e3d11a1b2
+  checksum: 09061e741bea9d2ba3987d01bb760c354fe29ca27996e74da3774e68c4783cf09ad21087703b5ffb036d3c2f86d16bea3c9f24466c2f266c8698f1e76c29d386
   languageName: node
   linkType: hard
 
-"@dnd-kit/sortable@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@dnd-kit/sortable@npm:5.1.0"
+"@dnd-kit/sortable@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@dnd-kit/sortable@npm:7.0.1"
   dependencies:
-    "@dnd-kit/utilities": ^3.0.0
+    "@dnd-kit/utilities": ^3.2.0
     tslib: ^2.0.0
   peerDependencies:
-    "@dnd-kit/core": ^4.0.2
+    "@dnd-kit/core": ^6.0.4
     react: ">=16.8.0"
-  checksum: f2f687a70dc52894e569d6377d7cb2e5e1761f0164cf08a1d0c8c3df43d6e88fd2858e0f5dfc8a5670fac8f6ce9a2ed91b0aeb8837f44d067acf21d1baf6a55e
+  checksum: b8b5ae504d57d6afb847c3ac8a865a3623c5915f4f0dd767017a17e6d1d36e144b74f6f90a17c07d5f8ddc83395a2db8bb90c420f017aee15bd88538b6f3f226
   languageName: node
   linkType: hard
 
-"@dnd-kit/utilities@npm:^3.0.0, @dnd-kit/utilities@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "@dnd-kit/utilities@npm:3.0.1"
-  dependencies:
-    tslib: ^2.0.0
-  peerDependencies:
-    react: ">=16.8.0"
-  checksum: 01ffe77bf98707e2e0e949b4425caf6a237ad4fc07fe15f9f0e4ab7c710d81ba2190915549c5302386cb55517e7be4bea6560dfb7eba0a516fa46719f837ec57
-  languageName: node
-  linkType: hard
-
-"@dnd-kit/utilities@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@dnd-kit/utilities@npm:3.0.2"
+"@dnd-kit/utilities@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@dnd-kit/utilities@npm:3.2.0"
   dependencies:
     tslib: ^2.0.0
   peerDependencies:
     react: ">=16.8.0"
-  checksum: 929be05e28cd61bd802f84e50ec7e4fa3fc66e25062b7dafd578c31810608f067a85fbb2b193c323723e51202b6afcd07e10e09f2172678fa0d7d257bc95e2b0
+  checksum: 575e554992c5ff26622854b889b6288580f308e1125620a4aae55d0a113d47f05fdb7c6e2023ce51c58d5a206091fc1deac868222dd5f9c35c80c3e2f99db9af
   languageName: node
   linkType: hard
 
@@ -6342,6 +6331,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "clsx@npm:1.2.1"
+  checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
+  languageName: node
+  linkType: hard
+
 "co@npm:^4.6.0":
   version: 4.6.0
   resolution: "co@npm:4.6.0"
@@ -7342,9 +7338,9 @@ __metadata:
   resolution: "dnd-kit-sortable-tree@workspace:."
   dependencies:
     "@babel/core": ^7.16.0
-    "@dnd-kit/core": ^4.0.3
-    "@dnd-kit/sortable": ^5.1.0
-    "@dnd-kit/utilities": ^3.0.2
+    "@dnd-kit/core": ^6.0.5
+    "@dnd-kit/sortable": ^7.0.1
+    "@dnd-kit/utilities": ^3.2.0
     "@size-limit/preset-small-lib": ^7.0.3
     "@storybook/addon-essentials": ^6.4.0
     "@storybook/addon-info": ^5.3.21
@@ -7358,27 +7354,27 @@ __metadata:
     "@welldone-software/why-did-you-render": ^6.2.3
     autoprefixer: ^10.4.0
     babel-loader: ^8.2.3
-    clsx: ^1.1.1
+    clsx: ^1.2.1
     copyfiles: ^2.3.0
     cssnano: ^5.0.12
     eslint-config-react-app: ^6.0.0
     eslint-plugin-prettier: ^4.0.0
     husky: ^7.0.4
     postcss: ^8.4.4
-    prettier: 2.5.1
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
-    react-merge-refs: ^1.1.0
+    prettier: 2.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-is: ^18.2.0
+    react-merge-refs: ^2.0.1
     rollup-plugin-postcss: ^4.0.2
     size-limit: ^7.0.3
     tsdx: ^0.14.1
     tslib: ^2.3.1
     typescript: ^4.5.2
   peerDependencies:
-    "@dnd-kit/core": ^4.0.3
-    "@dnd-kit/sortable": ^5.1.0
-    "@dnd-kit/utilities": ^3.0.1
+    "@dnd-kit/core": ^6.0.1
+    "@dnd-kit/sortable": ^7.0.0
+    "@dnd-kit/utilities": ^3.2.0
     react: ">=16"
     react-dom: ">=16"
   languageName: unknown
@@ -14407,12 +14403,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.5.1, prettier@npm:^2.2.1":
-  version: 2.5.1
-  resolution: "prettier@npm:2.5.1"
+"prettier@npm:2.7.1":
+  version: 2.7.1
+  resolution: "prettier@npm:2.7.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
+  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
   languageName: node
   linkType: hard
 
@@ -14422,6 +14418,15 @@ fsevents@^1.2.7:
   bin:
     prettier: ./bin-prettier.js
   checksum: bc78219e0f8173a808f4c6c8e0a137dd8ebd4fbe013e63fe1a37a82b48612f17b8ae8e18a992adf802ee2cf7428f14f084e7c2846ca5759cf4013c6e54810e1f
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.2.1":
+  version: 2.5.1
+  resolution: "prettier@npm:2.5.1"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
   languageName: node
   linkType: hard
 
@@ -14909,16 +14914,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
+"react-dom@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -15022,6 +15026,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-is@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-is@npm:18.2.0"
+  checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
 "react-lifecycles-compat@npm:^3.0.4":
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
@@ -15029,10 +15040,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-merge-refs@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "react-merge-refs@npm:1.1.0"
-  checksum: 90884352999002d868ab9f1bcfe3222fb0f2178ed629f1da7e98e5a9b02a2c96b4aa72800db92aabd69d2483211b4be57a2088e89a11a0b660e7ada744d4ddf7
+"react-merge-refs@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "react-merge-refs@npm:2.0.1"
+  checksum: c0b6fdb384a92e9b2bb7d56128244a2db97b9343c0dcae70f172352c3732312266c078495902707e45f523625afcba78996a22edea3a8e7b2b17fe97347059fe
   languageName: node
   linkType: hard
 
@@ -15202,13 +15213,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -16042,13 +16052,12 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 

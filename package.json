@@ -1,6 +1,6 @@
 {
   "name": "dnd-kit-sortable-tree",
-  "version": "0.1.43",
+  "version": "0.1.44",
   "license": "MIT",
   "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
   "main": "dist/index.js",
@@ -34,16 +34,16 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@dnd-kit/core": "^4.0.3",
-    "@dnd-kit/sortable": "^5.1.0",
-    "@dnd-kit/utilities": "^3.0.2",
-    "clsx": "^1.1.1",
-    "react-merge-refs": "^1.1.0"
+    "@dnd-kit/core": "^6.0.5",
+    "@dnd-kit/sortable": "^7.0.1",
+    "@dnd-kit/utilities": "^3.2.0",
+    "clsx": "^1.2.1",
+    "react-merge-refs": "^2.0.1"
   },
   "peerDependencies": {
-    "@dnd-kit/core": "^4.0.3",
-    "@dnd-kit/sortable": "^5.1.0",
-    "@dnd-kit/utilities": "^3.0.1",
+    "@dnd-kit/core": "^6.0.1",
+    "@dnd-kit/sortable": "^7.0.0",
+    "@dnd-kit/utilities": "^3.2.0",
     "react": ">=16",
     "react-dom": ">=16"
   },
@@ -90,10 +90,10 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "postcss": "^8.4.4",
-    "prettier": "2.5.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-is": "^17.0.2",
+    "prettier": "2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
     "rollup-plugin-postcss": "^4.0.2",
     "size-limit": "^7.0.3",
     "tsdx": "^0.14.1",
