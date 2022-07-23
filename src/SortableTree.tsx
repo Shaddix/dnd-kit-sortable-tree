@@ -210,7 +210,7 @@ export function SortableTree<
               <SortableTreeItem
                 {...rest}
                 key={item.id}
-                id={item.id?.toString()}
+                id={item.id as any}
                 item={item}
                 childCount={item.children?.length}
                 depth={

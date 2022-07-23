@@ -94,13 +94,13 @@ const MinimalTreeItemComponent = React.forwardRef<
  */
 const initialViableMinimalData: TreeItems<MinimalTreeItemData> = [
   {
-    id: '1',
+    id: 1,
     value: 'Jane',
     children: [
-      { id: '4', value: 'John' },
-      { id: '5', value: 'Sally' },
+      { id: 4, value: 'John' },
+      { id: 5, value: 'Sally' },
     ],
   },
-  { id: '2', value: 'Fred', children: [{ id: '6', value: 'Eugene' }] },
-  { id: '3', value: 'Helen' },
+  { id: 2, value: 'Fred', children: [{ id: 6, value: 'Eugene' }] },
+  { id: 3, value: 'Helen' },
 ];
