@@ -32,6 +32,8 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       manualDrag,
       showDragHandle,
       disableCollapseOnItemClick,
+      isLast,
+      parent,
       ...rest
     } = props;
 
@@ -63,25 +65,22 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
               {...handleProps}
             />
           )}
-          {!manualDrag &&
-            !hideCollapseButton &&
-            !!onCollapse &&
-            !!childCount && (
-              <button
-                onClick={(e) => {
-                  if (!disableCollapseOnItemClick) {
-                    return;
-                  }
-                  e.preventDefault();
-                  onCollapse?.();
-                }}
-                className={clsx(
-                  'dnd-sortable-tree_simple_tree-item-collapse_button',
-                  collapsed &&
-                    'dnd-sortable-tree_folder_simple-item-collapse_button-collapsed'
-                )}
-              />
-            )}
+          {!manualDrag && !hideCollapseButton && !!onCollapse && !!childCount && (
+            <button
+              onClick={(e) => {
+                if (!disableCollapseOnItemClick) {
+                  return;
+                }
+                e.preventDefault();
+                onCollapse?.();
+              }}
+              className={clsx(
+                'dnd-sortable-tree_simple_tree-item-collapse_button',
+                collapsed &&
+                  'dnd-sortable-tree_folder_simple-item-collapse_button-collapsed'
+              )}
+            />
+          )}
           {props.children}
         </div>
       </li>
