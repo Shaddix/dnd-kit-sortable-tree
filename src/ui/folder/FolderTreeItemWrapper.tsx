@@ -24,6 +24,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       depth,
       disableSelection,
       disableInteraction,
+      disableSorting,
       ghost,
       handleProps,
       indentationWidth,
@@ -36,6 +37,11 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       style,
       isLast,
       parent,
+      hideCollapseButton,
+      childCount,
+      manualDrag,
+      showDragHandle,
+      disableCollapseOnItemClick,
       ...rest
     } = props;
 
@@ -55,6 +61,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       >
         {flattenedParents.map((item) => (
           <div
+            key={item.id}
             className={
               item.isLast
                 ? 'dnd-sortable-tree_folder_line-last'
@@ -69,32 +76,27 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
               : 'dnd-sortable-tree_folder_line-to_self'
           }
         />
-        {props.manualDrag && props.showDragHandle && !props.disableSorting && (
+        {manualDrag && showDragHandle && !disableSorting && (
           <div className={'dnd-sortable-tree_folder_handle'} {...handleProps} />
         )}
-        {!props.manualDrag &&
-          !props.hideCollapseButton &&
-          !!onCollapse &&
-          !!props.childCount && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                onCollapse?.();
-              }}
-              className={clsx(
-                'dnd-sortable-tree_folder_tree-item-collapse_button',
-                collapsed &&
-                  'dnd-sortable-tree_folder_tree-item-collapse_button-collapsed'
-              )}
-            />
-          )}
+        {!manualDrag && !hideCollapseButton && !!onCollapse && !!childCount && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onCollapse?.();
+            }}
+            className={clsx(
+              'dnd-sortable-tree_folder_tree-item-collapse_button',
+              collapsed &&
+                'dnd-sortable-tree_folder_tree-item-collapse_button-collapsed'
+            )}
+          />
+        )}
         <div
           className={'dnd-sortable-tree_folder_tree-item'}
           ref={ref}
-          {...(props.manualDrag ? undefined : handleProps)}
-          onClick={
-            props.disableCollapseOnItemClick ? undefined : props.onCollapse
-          }
+          {...(manualDrag ? undefined : handleProps)}
+          onClick={disableCollapseOnItemClick ? undefined : onCollapse}
         >
           {props.children}
         </div>

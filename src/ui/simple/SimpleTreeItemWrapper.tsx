@@ -16,6 +16,7 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       depth,
       disableSelection,
       disableInteraction,
+      disableSorting,
       ghost,
       handleProps,
       indentationWidth,
@@ -26,10 +27,14 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       item,
       wrapperRef,
       style,
+      hideCollapseButton,
+      childCount,
+      manualDrag,
+      showDragHandle,
+      disableCollapseOnItemClick,
       ...rest
     } = props;
 
-    const disableCollapseOnItemClick = !!props.disableCollapseOnItemClick;
     return (
       <li
         className={clsx(
@@ -49,19 +54,19 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
         <div
           className={'dnd-sortable-tree_simple_tree-item'}
           ref={ref}
-          {...(props.manualDrag ? undefined : handleProps)}
-          onClick={disableCollapseOnItemClick ? undefined : props.onCollapse}
+          {...(manualDrag ? undefined : handleProps)}
+          onClick={disableCollapseOnItemClick ? undefined : onCollapse}
         >
-          {!props.disableSorting && props.showDragHandle !== false && (
+          {!disableSorting && showDragHandle !== false && (
             <div
               className={'dnd-sortable-tree_simple_handle'}
               {...handleProps}
             />
           )}
-          {!props.manualDrag &&
-            !props.hideCollapseButton &&
+          {!manualDrag &&
+            !hideCollapseButton &&
             !!onCollapse &&
-            !!props.childCount && (
+            !!childCount && (
               <button
                 onClick={(e) => {
                   if (!disableCollapseOnItemClick) {
