@@ -133,4 +133,6 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
 
 # Troubleshooting
 
-1. If your dragged item is shown at the end of a list, make sure you wrapped your `TreeItem` component in `React.forwardRef` and passing the `ref` to `SimpleTreeItemWrapper`
+1. If your dragged item is shown at the end of a list, make sure you that:
+   1. You wrapped your `TreeItem` component in `React.forwardRef` and passing the `ref` to `SimpleTreeItemWrapper`
+   1. You pass the `styles` prop from `TreeItem` to `SimpleTreeItemWrapper`
