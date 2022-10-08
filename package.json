@@ -41,8 +41,8 @@
     "react-merge-refs": "^2.0.1"
   },
   "peerDependencies": {
-    "@dnd-kit/core": "^6.0.1",
-    "@dnd-kit/sortable": "^7.0.0",
+    "@dnd-kit/core": "^6.0.5",
+    "@dnd-kit/sortable": "^7.0.1",
     "@dnd-kit/utilities": "^3.2.0",
     "react": ">=16",
     "react-dom": ">=16"
@@ -70,13 +70,13 @@
     }
   ],
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@size-limit/preset-small-lib": "^7.0.3",
-    "@storybook/addon-essentials": "^6.4.0",
+    "@babel/core": "^7.19.3",
+    "@size-limit/preset-small-lib": "^8.1.0",
+    "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-info": "^5.3.21",
-    "@storybook/addon-links": "^6.4.0",
-    "@storybook/addons": "^6.4.0",
-    "@storybook/react": "^6.4.7",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/addons": "^6.5.12",
+    "@storybook/react": "^6.5.12",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
@@ -98,6 +98,6 @@
     "size-limit": "^7.0.3",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   }
 }
