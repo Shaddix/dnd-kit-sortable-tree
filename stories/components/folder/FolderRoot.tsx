@@ -22,7 +22,13 @@ export const initialItems: TreeItems<TreeItemData> = [
         date: new Date(),
         canHaveChildren: false,
       },
-      { id: 'Summer', children: [], text: 'Summer1', date: new Date() },
+      {
+        id: 'Summer',
+        children: [],
+        disableSorting: true,
+        text: 'Summer1',
+        date: new Date(),
+      },
       {
         id: 'Fall',
         children: [],

@@ -15,6 +15,12 @@ export type TreeItem<T> = {
   Default: true.
    */
   canHaveChildren?: boolean;
+
+  /*
+  If true, the node can not be sorted/moved/dragged.
+  Default: false.
+   */
+  disableSorting?: boolean;
 } & T;
 
 export type TreeItems<T extends Record<string, any>> = TreeItem<T>[];

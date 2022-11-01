@@ -58,7 +58,10 @@ const dropAnimation = {
   ...defaultDropAnimation,
 };
 
-export type SortableTreeProps<TData, TElement extends HTMLElement> = {
+export type SortableTreeProps<
+  TData extends Record<string, any>,
+  TElement extends HTMLElement
+> = {
   items: TreeItems<TData>;
   onItemsChanged(items: TreeItems<TData>): void;
   TreeItemComponent: TreeItemComponentType<TData, TElement>;
@@ -73,7 +76,7 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
   },
 };
 export function SortableTree<
-  TreeItemData,
+  TreeItemData extends Record<string, any>,
   TElement extends HTMLElement = HTMLDivElement
 >({
   items,

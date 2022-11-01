@@ -3,7 +3,10 @@ import { arrayMove } from '@dnd-kit/sortable';
 import type { FlattenedItem, TreeItem, TreeItems } from './types';
 import { UniqueIdentifier } from '@dnd-kit/core';
 
-export const iOS = typeof window !== "undefined" ? /iPad|iPhone|iPod/.test(navigator.platform) : false;
+export const iOS =
+  typeof window !== 'undefined'
+    ? /iPad|iPhone|iPod/.test(navigator.platform)
+    : false;
 
 function getDragDepth(offset: number, indentationWidth: number) {
   return Math.round(offset / indentationWidth);
@@ -105,7 +108,7 @@ function getMinDepth<T>({ nextItem }: { nextItem: FlattenedItem<T> }) {
   return 0;
 }
 
-function flatten<T>(
+function flatten<T extends Record<string, any>>(
   items: TreeItems<T>,
   parentId: UniqueIdentifier | null = null,
   depth = 0,
@@ -128,11 +131,15 @@ function flatten<T>(
   }, []);
 }
 
-export function flattenTree<T>(items: TreeItems<T>): FlattenedItem<T>[] {
+export function flattenTree<T extends Record<string, any>>(
+  items: TreeItems<T>
+): FlattenedItem<T>[] {
   return flatten(items);
 }
 
-export function buildTree<T>(flattenedItems: FlattenedItem<T>[]): TreeItems<T> {
+export function buildTree<T extends Record<string, any>>(
+  flattenedItems: FlattenedItem<T>[]
+): TreeItems<T> {
   const root: TreeItem<T> = { id: 'root', children: [] } as any;
   const nodes: Record<string, TreeItem<T>> = { [root.id]: root };
   const items = flattenedItems.map((item) => ({ ...item, children: [] }));
@@ -153,7 +160,7 @@ export function findItem<T>(items: TreeItem<T>[], itemId: UniqueIdentifier) {
   return items.find(({ id }) => id === itemId);
 }
 
-export function findItemDeep<T>(
+export function findItemDeep<T extends Record<string, any>>(
   items: TreeItems<T>,
   itemId: UniqueIdentifier
 ): TreeItem<T> | undefined {
@@ -176,7 +183,10 @@ export function findItemDeep<T>(
   return undefined;
 }
 
-export function removeItem<T>(items: TreeItems<T>, id: string) {
+export function removeItem<T extends Record<string, any>>(
+  items: TreeItems<T>,
+  id: string
+) {
   const newItems = [];
 
   for (const item of items) {
@@ -194,7 +204,10 @@ export function removeItem<T>(items: TreeItems<T>, id: string) {
   return newItems;
 }
 
-export function setProperty<TData, T extends keyof TreeItem<TData>>(
+export function setProperty<
+  TData extends Record<string, any>,
+  T extends keyof TreeItem<TData>
+>(
   items: TreeItems<TData>,
   id: string,
   property: T,
@@ -224,7 +237,10 @@ function countChildren<T>(items: TreeItem<T>[], count = 0): number {
   }, count);
 }
 
-export function getChildCount<T>(items: TreeItems<T>, id: UniqueIdentifier) {
+export function getChildCount<T extends Record<string, any>>(
+  items: TreeItems<T>,
+  id: UniqueIdentifier
+) {
   if (!id) {
     return 0;
   }
