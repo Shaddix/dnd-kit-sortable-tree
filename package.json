@@ -1,6 +1,6 @@
 {
   "name": "dnd-kit-sortable-tree",
-  "version": "0.1.50",
+  "version": "0.1.51",
   "license": "MIT",
   "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
   "main": "dist/index.js",

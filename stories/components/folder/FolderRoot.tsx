@@ -23,7 +23,7 @@ export const initialItems: TreeItems<TreeItemData> = [
         canHaveChildren: false,
       },
       {
-        id: 'Summer',
+        id: 'Summer (sorting disabled)',
         children: [],
         disableSorting: true,
         text: 'Summer1',
