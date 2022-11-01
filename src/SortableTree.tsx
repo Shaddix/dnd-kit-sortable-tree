@@ -32,6 +32,7 @@ import {
 
 import {
   buildTree,
+  findItemDeep,
   flattenTree,
   getChildCount,
   getProjection,
@@ -41,6 +42,7 @@ import {
 } from './utilities';
 import type {
   FlattenedItem,
+  ItemChangedReason,
   SensorContext,
   TreeItemComponentType,
   TreeItems,
@@ -63,7 +65,10 @@ export type SortableTreeProps<
   TElement extends HTMLElement
 > = {
   items: TreeItems<TData>;
-  onItemsChanged(items: TreeItems<TData>): void;
+  onItemsChanged(
+    items: TreeItems<TData>,
+    reason: ItemChangedReason<TData>
+  ): void;
   TreeItemComponent: TreeItemComponentType<TData, TElement>;
   indentationWidth?: number;
   indicator?: boolean;
@@ -153,17 +158,26 @@ export function SortableTree<
   itemsRef.current = items;
   const handleRemove = useCallback(
     (id: string) => {
-      onItemsChanged(removeItem(itemsRef.current, id));
+      const item = findItemDeep(itemsRef.current, id)!;
+      onItemsChanged(removeItem(itemsRef.current, id), {
+        type: 'removed',
+        item,
+      });
     },
     [onItemsChanged]
   );
 
   const handleCollapse = useCallback(
     function handleCollapse(id: string) {
+      const item = findItemDeep(itemsRef.current, id)!;
       onItemsChanged(
         setProperty(itemsRef.current, id, 'collapsed', ((value: boolean) => {
           return !value;
-        }) as any)
+        }) as any),
+        {
+          type: item.collapsed ? 'collapsed' : 'expanded',
+          item: item,
+        }
       );
     },
     [onItemsChanged]
@@ -299,9 +313,19 @@ export function SortableTree<
       const activeTreeItem = clonedItems[activeIndex];
 
       clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
+      const draggedFromParent = activeTreeItem.parent;
       const sortedItems = arrayMove(clonedItems, activeIndex, overIndex);
       const newItems = buildTree(sortedItems);
-      onItemsChanged(newItems);
+      const newActiveItem = sortedItems.find((x) => x.id === active.id)!;
+      const currentParent = newActiveItem.parentId
+        ? sortedItems.find((x) => x.id === newActiveItem.parentId)!
+        : null;
+      onItemsChanged(newItems, {
+        type: 'dropped',
+        draggedItem: newActiveItem,
+        draggedFromParent: draggedFromParent,
+        droppedToParent: currentParent,
+      });
     }
   }
 

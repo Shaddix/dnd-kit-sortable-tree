@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { SortableTree, TreeItems } from '../../../src';
 import { FolderTreeItem } from './FolderTreeItem';
 import { TreeItemData } from '../TreeItemData';
@@ -74,7 +74,13 @@ export const FolderRoot: React.FC<Props> = (props) => {
     <SortableTree
       {...props}
       items={items}
-      onItemsChanged={setItems}
+      onItemsChanged={useCallback(
+        (newItems, reason) => {
+          console.log('change reason', reason);
+          setItems(newItems);
+        },
+        [setItems]
+      )}
       TreeItemComponent={FolderTreeItem}
     />
   );
