@@ -12,7 +12,7 @@ Play around in [examples](https://shaddix.github.io/dnd-kit-sortable-tree) to ch
 
 ## How-to use
 
-Check out the Storybook for code samples and play around.
+Check out the Storybook for code samples and play around. You could also play with it on [playcode](https://playcode.io/1032571)
 
 Shortly, you need to render:
 

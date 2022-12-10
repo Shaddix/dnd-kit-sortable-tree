@@ -7,6 +7,7 @@ import {
   TreeItemComponentProps,
   TreeItems,
 } from '../src';
+import { WithInput } from './components/WithInput';
 
 export default {
   title: 'Simple',
@@ -104,3 +105,4 @@ const initialViableMinimalData: TreeItems<MinimalTreeItemData> = [
   { id: 2, value: 'Fred', children: [{ id: 6, value: 'Eugene' }] },
   { id: 3, value: 'Helen' },
 ];
+export { WithInput };
