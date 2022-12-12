@@ -43,12 +43,14 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       showDragHandle,
       disableCollapseOnItemClick,
       className,
+      contentClassName,
       ...rest
     } = props;
 
     const flattenedParents = flattenParents(parent);
     return (
       <li
+        {...rest}
         className={clsx(
           'dnd-sortable-tree_folder_wrapper',
           clone && 'dnd-sortable-tree_folder_clone',
@@ -58,7 +60,6 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           className
         )}
         ref={wrapperRef}
-        {...rest}
         style={style}
       >
         {flattenedParents.map((item) => (
@@ -95,7 +96,10 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           />
         )}
         <div
-          className={'dnd-sortable-tree_folder_tree-item'}
+          className={clsx(
+            'dnd-sortable-tree_folder_tree-item',
+            contentClassName
+          )}
           ref={ref}
           {...(manualDrag ? undefined : handleProps)}
           onClick={disableCollapseOnItemClick ? undefined : onCollapse}

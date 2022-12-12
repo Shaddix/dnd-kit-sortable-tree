@@ -35,11 +35,14 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       isLast,
       parent,
       className,
+      contentClassName,
       ...rest
     } = props;
 
     return (
       <li
+        ref={wrapperRef}
+        {...rest}
         className={clsx(
           'dnd-sortable-tree_simple_wrapper',
           clone && 'dnd-sortable-tree_simple_clone',
@@ -48,15 +51,16 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           disableInteraction && 'dnd-sortable-tree_simple_disable-interaction',
           className
         )}
-        ref={wrapperRef}
-        {...rest}
         style={{
           ...style,
           paddingLeft: clone ? indentationWidth : indentationWidth * depth,
         }}
       >
         <div
-          className={'dnd-sortable-tree_simple_tree-item'}
+          className={clsx(
+            'dnd-sortable-tree_simple_tree-item',
+            contentClassName
+          )}
           ref={ref}
           {...(manualDrag ? undefined : handleProps)}
           onClick={disableCollapseOnItemClick ? undefined : onCollapse}

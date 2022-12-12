@@ -114,7 +114,14 @@ export type TreeItemComponentProps<T = {}> = {
   indicator?: boolean;
   indentationWidth: number;
   style?: React.CSSProperties;
+  /*
+   * Class name of the whole tree item (including paddings)
+   */
   className?: string;
+  /*
+   * Class name of the content (i.e. excluding left paddings)
+   */
+  contentClassName?: string;
   onCollapse?(): void;
   onRemove?(): void;
   wrapperRef?(node: HTMLLIElement): void;
