@@ -132,6 +132,11 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
 - `indentationWidth` - _optional_, padding used for children
 - `disableSorting` - _optional_, you could set this to `true` to completely disable the sorting
 
+### TreeItemWrapper configuration (props of `<SimpleTreeItemWrapper>` and `<FolderTreeItemWrapper>`)
+
+- `manualDrag` - Default: `false`. Set to `true` if you want tree item to be draggable ONLY from dragHandle.
+- `showDragHandle` - _optional_, set to `false` if you want to hide default dragHandle and show your own instead. Use `<div {...props.handleProps}>DRAG_ME</div>` for your own drag handle.
+
 # Troubleshooting
 
 1. If your dragged item is shown at the end of a list, make sure you that:
