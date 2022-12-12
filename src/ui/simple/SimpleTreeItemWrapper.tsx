@@ -34,6 +34,7 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       disableCollapseOnItemClick,
       isLast,
       parent,
+      className,
       ...rest
     } = props;
 
@@ -44,7 +45,8 @@ export const SimpleTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           clone && 'dnd-sortable-tree_simple_clone',
           ghost && 'dnd-sortable-tree_simple_ghost',
           disableSelection && 'dnd-sortable-tree_simple_disable-selection',
-          disableInteraction && 'dnd-sortable-tree_simple_disable-interaction'
+          disableInteraction && 'dnd-sortable-tree_simple_disable-interaction',
+          className
         )}
         ref={wrapperRef}
         {...rest}

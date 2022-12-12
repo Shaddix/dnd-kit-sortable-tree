@@ -114,6 +114,7 @@ export type TreeItemComponentProps<T = {}> = {
   indicator?: boolean;
   indentationWidth: number;
   style?: React.CSSProperties;
+  className?: string;
   onCollapse?(): void;
   onRemove?(): void;
   wrapperRef?(node: HTMLLIElement): void;

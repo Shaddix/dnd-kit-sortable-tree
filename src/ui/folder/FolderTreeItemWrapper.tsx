@@ -42,6 +42,7 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
       manualDrag,
       showDragHandle,
       disableCollapseOnItemClick,
+      className,
       ...rest
     } = props;
 
@@ -53,7 +54,8 @@ export const FolderTreeItemWrapper: TreeItemComponentType<{}, HTMLDivElement> =
           clone && 'dnd-sortable-tree_folder_clone',
           ghost && 'dnd-sortable-tree_folder_ghost',
           disableSelection && 'dnd-sortable-tree_folder_disable-selection',
-          disableInteraction && 'dnd-sortable-tree_folder_disable-interaction'
+          disableInteraction && 'dnd-sortable-tree_folder_disable-interaction',
+          className
         )}
         ref={wrapperRef}
         {...rest}
