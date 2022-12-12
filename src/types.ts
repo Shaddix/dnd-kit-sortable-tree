@@ -104,7 +104,7 @@ export type TreeItemComponentProps<T = {}> = {
   disableCollapseOnItemClick?: boolean;
 
   /*
-  ONLY makes sens if `manualDrag` is true! If `manualDrag` is false `showDragHandle` is automatically false.
+  ONLY makes sense if `manualDrag` is true! If `manualDrag` is false `showDragHandle` is automatically false.
   If true, the special drag Handle is shown within a Wrapper.
   If false, it's up to the developer to either handle drag by himself, or use automatic dragging (by ensuring that `manualDrag` is false)
    */
