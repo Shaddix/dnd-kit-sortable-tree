@@ -7941,9 +7941,9 @@ __metadata:
     tslib: ^2.3.1
     typescript: ^4.8.4
   peerDependencies:
-    "@dnd-kit/core": ^6.0.5
-    "@dnd-kit/sortable": ^7.0.1
-    "@dnd-kit/utilities": ^3.2.0
+    "@dnd-kit/core": ">=6.0.5"
+    "@dnd-kit/sortable": ">=7.0.1"
+    "@dnd-kit/utilities": ">=3.2.0"
     react: ">=16"
     react-dom: ">=16"
   languageName: unknown

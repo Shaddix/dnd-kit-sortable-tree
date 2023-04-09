@@ -8,7 +8,7 @@ Play around in [examples](https://shaddix.github.io/dnd-kit-sortable-tree) to ch
 
 ## Install
 
-    npm install dnd-kit-sortable-tree
+    npm install dnd-kit-sortable-tree @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
 
 ## How-to use
 

@@ -1,6 +1,6 @@
 {
   "name": "dnd-kit-sortable-tree",
-  "version": "0.1.55",
+  "version": "0.1.57",
   "license": "MIT",
   "homepage": "https://github.com/shaddix/dnd-kit-sortable-tree#readme",
   "main": "dist/index.js",
@@ -34,16 +34,13 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@dnd-kit/core": "^6.0.5",
-    "@dnd-kit/sortable": "^7.0.1",
-    "@dnd-kit/utilities": "^3.2.0",
     "clsx": "^1.2.1",
     "react-merge-refs": "^2.0.1"
   },
   "peerDependencies": {
-    "@dnd-kit/core": "^6.0.5",
-    "@dnd-kit/sortable": "^7.0.1",
-    "@dnd-kit/utilities": "^3.2.0",
+    "@dnd-kit/core": ">=6.0.5",
+    "@dnd-kit/sortable": ">=7.0.1",
+    "@dnd-kit/utilities": ">=3.2.0",
     "react": ">=16",
     "react-dom": ">=16"
   },
@@ -71,6 +68,9 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@dnd-kit/core": "^6.0.5",
+    "@dnd-kit/sortable": "^7.0.1",
+    "@dnd-kit/utilities": "^3.2.0",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-info": "^5.3.21",
