@@ -16,6 +16,7 @@ import {
   DragOverEvent,
   DragOverlay,
   DragStartEvent,
+  DropAnimation,
   // KeyboardSensor,
   Modifier,
   PointerSensor,
@@ -24,6 +25,7 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
+import { CSS } from '@dnd-kit/utilities';
 import {
   arrayMove,
   SortableContext,
@@ -50,16 +52,6 @@ import type {
 // import { sortableTreeKeyboardCoordinates } from './keyboardCoordinates';
 import { SortableTreeItem } from './SortableTreeItem';
 
-// const measuring = {
-//   droppable: {
-//     strategy: MeasuringStrategy.Always,
-//   },
-// };
-
-const dropAnimation = {
-  ...defaultDropAnimation,
-};
-
 export type SortableTreeProps<
   TData extends Record<string, any>,
   TElement extends HTMLElement
@@ -74,12 +66,36 @@ export type SortableTreeProps<
   indicator?: boolean;
   pointerSensorOptions?: PointerSensorOptions;
   disableSorting?: boolean;
+  dropAnimation?: DropAnimation;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
     distance: 10,
   },
 };
+const dropAnimationDefaultConfig: DropAnimation = {
+  keyframes({ transform }) {
+    return [
+      { opacity: 1, transform: CSS.Transform.toString(transform.initial) },
+      {
+        opacity: 0,
+        transform: CSS.Transform.toString({
+          ...transform.final,
+          x: transform.final.x + 5,
+          y: transform.final.y + 5,
+        }),
+      },
+    ];
+  },
+  easing: 'ease-out',
+  sideEffects({ active }) {
+    active.node.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: defaultDropAnimation.duration,
+      easing: defaultDropAnimation.easing,
+    });
+  },
+};
+
 export function SortableTree<
   TreeItemData extends Record<string, any>,
   TElement extends HTMLElement = HTMLDivElement
@@ -91,6 +107,7 @@ export function SortableTree<
   TreeItemComponent,
   pointerSensorOptions,
   disableSorting,
+  dropAnimation,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -256,7 +273,9 @@ export function SortableTree<
             );
           })}
           {createPortal(
-            <DragOverlay dropAnimation={dropAnimation}>
+            <DragOverlay
+              dropAnimation={dropAnimation ?? dropAnimationDefaultConfig}
+            >
               {activeId && activeItem ? (
                 <TreeItemComponent
                   {...rest}
