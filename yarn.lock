@@ -1931,30 +1931,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/core@npm:^6.0.5":
-  version: 6.0.5
-  resolution: "@dnd-kit/core@npm:6.0.5"
+"@dnd-kit/core@npm:^6.0.8":
+  version: 6.0.8
+  resolution: "@dnd-kit/core@npm:6.0.8"
   dependencies:
     "@dnd-kit/accessibility": ^3.0.0
-    "@dnd-kit/utilities": ^3.2.0
+    "@dnd-kit/utilities": ^3.2.1
     tslib: ^2.0.0
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 09061e741bea9d2ba3987d01bb760c354fe29ca27996e74da3774e68c4783cf09ad21087703b5ffb036d3c2f86d16bea3c9f24466c2f266c8698f1e76c29d386
+  checksum: abe48ff7395f84fd8c15e6c8b13da4df153dc1f1076096d783acd0c25539516c77e4854ea59be6621dde55739cb0df1d62924ad069df3267fe05ad90ef729b2f
   languageName: node
   linkType: hard
 
-"@dnd-kit/sortable@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@dnd-kit/sortable@npm:7.0.1"
+"@dnd-kit/sortable@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "@dnd-kit/sortable@npm:7.0.2"
   dependencies:
     "@dnd-kit/utilities": ^3.2.0
     tslib: ^2.0.0
   peerDependencies:
-    "@dnd-kit/core": ^6.0.4
+    "@dnd-kit/core": ^6.0.7
     react: ">=16.8.0"
-  checksum: b8b5ae504d57d6afb847c3ac8a865a3623c5915f4f0dd767017a17e6d1d36e144b74f6f90a17c07d5f8ddc83395a2db8bb90c420f017aee15bd88538b6f3f226
+  checksum: 4ce705aceb15766a0deefe25a9d95a87e9413c3fb9088ea3eb0962e57f844895000117fcec7c0944a0d4ae4e1e889cfa69e3d3778164d4d23115fb1edb218283
   languageName: node
   linkType: hard
 
@@ -1966,6 +1966,17 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
   checksum: 575e554992c5ff26622854b889b6288580f308e1125620a4aae55d0a113d47f05fdb7c6e2023ce51c58d5a206091fc1deac868222dd5f9c35c80c3e2f99db9af
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/utilities@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "@dnd-kit/utilities@npm:3.2.1"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 038fd5cc1328bf4c9dca17cd48046e5a687bbf9d904c7197f851aab869ab52d9dee2734b2e255256fd6158245acd00063a23deed962c7673c0fadfbf061f04ca
   languageName: node
   linkType: hard
 
@@ -4361,15 +4372,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.6":
-  version: 18.0.6
-  resolution: "@types/react-dom@npm:18.0.6"
-  dependencies:
-    "@types/react": "*"
-  checksum: db571047af1a567631758700b9f7d143e566df939cfe5fbf7535347cc0c726a1cdbb5e3f8566d076e54cf708b6c1166689de194a9ba09ee35efc9e1d45911685
-  languageName: node
-  linkType: hard
-
 "@types/react-syntax-highlighter@npm:11.0.4":
   version: 11.0.4
   resolution: "@types/react-syntax-highlighter@npm:11.0.4"
@@ -4396,17 +4398,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e68b0d59aa69577fc6a6d654b25d5d8408625498f4c483f160b557fac21e840f6e8807cbde93e9f039949b6d624a019b1990d18499c1d65aecf3605c25e30242
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.0.15":
-  version: 18.0.15
-  resolution: "@types/react@npm:18.0.15"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: e22cc388d1c145aa184787e44dc28db4789976c704cd5db475c170bb76a560eb81def5f346cfe750949bb3d43ad88822b8cbb9f19b1286e3795892a8263e7715
   languageName: node
   linkType: hard
 
@@ -7907,17 +7898,15 @@ __metadata:
   resolution: "dnd-kit-sortable-tree@workspace:."
   dependencies:
     "@babel/core": ^7.19.3
-    "@dnd-kit/core": ^6.0.5
-    "@dnd-kit/sortable": ^7.0.1
-    "@dnd-kit/utilities": ^3.2.0
+    "@dnd-kit/core": ^6.0.8
+    "@dnd-kit/sortable": ^7.0.2
+    "@dnd-kit/utilities": ^3.2.1
     "@size-limit/preset-small-lib": ^8.1.0
     "@storybook/addon-essentials": ^6.5.12
     "@storybook/addon-info": ^5.3.21
     "@storybook/addon-links": ^6.5.12
     "@storybook/addons": ^6.5.12
     "@storybook/react": ^6.5.12
-    "@types/react": ^18.0.15
-    "@types/react-dom": ^18.0.6
     "@typescript-eslint/eslint-plugin": ^5.5.0
     "@typescript-eslint/parser": ^5.5.0
     "@welldone-software/why-did-you-render": ^6.2.3

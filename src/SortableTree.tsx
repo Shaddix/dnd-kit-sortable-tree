@@ -1,6 +1,7 @@
 import React, {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -17,6 +18,7 @@ import {
   DragOverlay,
   DragStartEvent,
   DropAnimation,
+  MeasuringStrategy,
   // KeyboardSensor,
   Modifier,
   PointerSensor,
@@ -71,6 +73,12 @@ export type SortableTreeProps<
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
     distance: 10,
+  },
+};
+
+const measuring = {
+  droppable: {
+    strategy: MeasuringStrategy.Always,
   },
 };
 const dropAnimationDefaultConfig: DropAnimation = {
@@ -220,14 +228,14 @@ export function SortableTree<
     }),
     []
   );
-
+  console.log('qwe', new Date().getTime(), flattenedItems?.[0].text);
   return (
     <DndContext
       accessibility={{ announcements }}
       sensors={disableSorting ? undefined : sensors}
       modifiers={indicator ? modifiersArray : undefined}
       collisionDetection={closestCenter}
-      // measuring={measuring}
+      measuring={measuring}
       onDragStart={disableSorting ? undefined : handleDragStart}
       onDragMove={disableSorting ? undefined : handleDragMove}
       onDragOver={disableSorting ? undefined : handleDragOver}
@@ -238,61 +246,57 @@ export function SortableTree<
         items={sortedIds}
         strategy={disableSorting ? undefined : verticalListSortingStrategy}
       >
-        <>
-          {flattenedItems.map((item) => {
-            return (
-              <SortableTreeItem
+        {flattenedItems.map((item) => {
+          return (
+            <SortableTreeItem
+              {...rest}
+              key={item.id}
+              id={item.id as any}
+              item={item}
+              childCount={item.children?.length}
+              depth={
+                item.id === activeId && projected ? projected.depth : item.depth
+              }
+              indentationWidth={indentationWidth}
+              indicator={indicator}
+              collapsed={Boolean(item.collapsed && item.children?.length)}
+              onCollapse={item.children?.length ? handleCollapse : undefined}
+              onRemove={handleRemove}
+              isLast={
+                item.id === activeId && projected
+                  ? projected.isLast
+                  : item.isLast
+              }
+              parent={
+                item.id === activeId && projected
+                  ? projected.parent
+                  : item.parent
+              }
+              TreeItemComponent={TreeItemComponent}
+              disableSorting={disableSorting}
+            />
+          );
+        })}
+        {createPortal(
+          <DragOverlay
+            dropAnimation={dropAnimation ?? dropAnimationDefaultConfig}
+          >
+            {activeId && activeItem ? (
+              <TreeItemComponent
                 {...rest}
-                key={item.id}
-                id={item.id as any}
-                item={item}
-                childCount={item.children?.length}
-                depth={
-                  item.id === activeId && projected
-                    ? projected.depth
-                    : item.depth
-                }
+                item={activeItem}
+                children={[]}
+                depth={activeItem.depth}
+                clone
+                childCount={getChildCount(items, activeId) + 1}
                 indentationWidth={indentationWidth}
-                indicator={indicator}
-                collapsed={Boolean(item.collapsed && item.children?.length)}
-                onCollapse={item.children?.length ? handleCollapse : undefined}
-                onRemove={handleRemove}
-                isLast={
-                  item.id === activeId && projected
-                    ? projected.isLast
-                    : item.isLast
-                }
-                parent={
-                  item.id === activeId && projected
-                    ? projected.parent
-                    : item.parent
-                }
-                TreeItemComponent={TreeItemComponent}
-                disableSorting={disableSorting}
+                isLast={false}
+                parent={activeItem.parent}
               />
-            );
-          })}
-          {createPortal(
-            <DragOverlay
-              dropAnimation={dropAnimation ?? dropAnimationDefaultConfig}
-            >
-              {activeId && activeItem ? (
-                <TreeItemComponent
-                  {...rest}
-                  item={activeItem}
-                  children={[]}
-                  depth={activeItem.depth}
-                  clone
-                  childCount={getChildCount(items, activeId) + 1}
-                  indentationWidth={indentationWidth}
-                  isLast={false}
-                  parent={activeItem.parent}
-                />
-              ) : null}
-            </DragOverlay>,
-            document.body
-          )}
-        </>
+            ) : null}
+          </DragOverlay>,
+          document.body
+        )}
       </SortableContext>
     </DndContext>
   );
@@ -339,12 +343,19 @@ export function SortableTree<
       const currentParent = newActiveItem.parentId
         ? sortedItems.find((x) => x.id === newActiveItem.parentId)!
         : null;
-      onItemsChanged(newItems, {
-        type: 'dropped',
-        draggedItem: newActiveItem,
-        draggedFromParent: draggedFromParent,
-        droppedToParent: currentParent,
-      });
+      // removing setTimeout leads to a unwanted scrolling
+      // Use case:
+      //   There are a lot of items in a tree (so that the scroll exists).
+      //   You take the node from the bottom and move it to the top
+      //   Without `setTimeout` when you drop the node the list gets scrolled to the bottom.
+      setTimeout(() =>
+        onItemsChanged(newItems, {
+          type: 'dropped',
+          draggedItem: newActiveItem,
+          draggedFromParent: draggedFromParent,
+          droppedToParent: currentParent,
+        })
+      );
     }
   }
 
