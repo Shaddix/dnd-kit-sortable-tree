@@ -227,14 +227,13 @@ export function SortableTree<
     }),
     []
   );
-  console.log('qwe', new Date().getTime(), flattenedItems?.[0].text);
   return (
     <DndContext
       accessibility={{ announcements }}
       sensors={disableSorting ? undefined : sensors}
       modifiers={indicator ? modifiersArray : undefined}
       collisionDetection={closestCenter}
-      measuring={measuring}
+      // measuring={measuring}
       onDragStart={disableSorting ? undefined : handleDragStart}
       onDragMove={disableSorting ? undefined : handleDragMove}
       onDragOver={disableSorting ? undefined : handleDragOver}
