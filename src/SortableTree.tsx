@@ -17,7 +17,7 @@ import {
   DragOverlay,
   DragStartEvent,
   DropAnimation,
-  MeasuringStrategy,
+  // MeasuringStrategy,
   // KeyboardSensor,
   Modifier,
   PointerSensor,
@@ -75,11 +75,11 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
   },
 };
 
-const measuring = {
-  droppable: {
-    strategy: MeasuringStrategy.Always,
-  },
-};
+// const measuring = {
+//   droppable: {
+//     strategy: MeasuringStrategy.Always,
+//   },
+// };
 const dropAnimationDefaultConfig: DropAnimation = {
   keyframes({ transform }) {
     return [
