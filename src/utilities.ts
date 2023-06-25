@@ -68,7 +68,7 @@ export function getProjection<T>(
   function findParentWhichCanHaveChildren(
     parent: FlattenedItem<T> | null,
     dragItem: FlattenedItem<T>
-  ) {
+  ): FlattenedItem<T> | null {
     if (!parent) return parent;
     const canHaveChildren =
       typeof parent.canHaveChildren === 'function'
