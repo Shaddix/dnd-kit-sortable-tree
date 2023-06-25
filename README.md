@@ -123,7 +123,12 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
 
 ### Data configuration (each TreeItem element could define them):
 
-- `canHaveChildren` - Default: `true`. If set to `false`, prevents any node from being dragged into the current one
+- `canHaveChildren` - Default: `true`.
+
+  If set to `false`, prevents any node from being dragged into the current one.
+
+  Also accepts a function: `(dragItem) => bool` which could conditionally determine if a certain item could be a children of a node
+
 - `disableSorting` - Default: `false`. If set to `true`, prevents node from being dragged (i.e. it can't be sorted or moved to another node)
 
 ### Tree configuration (props of `<SortableTree>`)
