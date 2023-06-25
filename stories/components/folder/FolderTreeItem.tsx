@@ -21,7 +21,16 @@ export const FolderTreeItem = forwardRef<
     >
       <span className={styles.Text}>{item.text}</span>
       <span className={styles.Text}>{item.date.getDate()}</span>
-      {!clone && onRemove && <button onClick={onRemove}>X</button>}
+      {!clone && onRemove && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove();
+          }}
+        >
+          X
+        </button>
+      )}
       {clone && childCount && childCount > 1 ? (
         <span className={styles.Count}>{childCount}</span>
       ) : null}
