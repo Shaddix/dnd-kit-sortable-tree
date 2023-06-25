@@ -71,7 +71,7 @@ export type SortableTreeProps<
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
-    distance: 10,
+    distance: 3,
   },
 };
 

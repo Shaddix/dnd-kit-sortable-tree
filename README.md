@@ -132,6 +132,16 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
 - `onItemsChanged` - _mandatory_, callback that is called when dragging of certain item is finished. You should preserve new state and adjust the value of `items` prop as needed.
 - `TreeItemComponent` - _mandatory_, component that renders a single tree row.
 - `indentationWidth` - _optional_, padding used for children
+- `pointerSensorOptions` - _optional_, configures the condition when item dragging starts. Defaults to:
+
+  ```json
+  {
+    "activationConstraint": {
+      "distance": 3
+    }
+  }
+  ```
+
 - `disableSorting` - _optional_, you could set this to `true` to completely disable the sorting
 
 ### TreeItemWrapper configuration (props of `<SimpleTreeItemWrapper>` and `<FolderTreeItemWrapper>`)
