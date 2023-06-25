@@ -103,6 +103,10 @@ const initialViableMinimalData: TreeItems<MinimalTreeItemData> = [
     ],
   },
   { id: 2, value: 'Fred', children: [{ id: 6, value: 'Eugene' }] },
-  { id: 3, value: 'Helen' },
+  {
+    id: 3,
+    value: 'Helen',
+    canHaveChildren: (dragItem) => (dragItem.id === 2 ? false : true),
+  },
 ];
 export { WithInput };

@@ -14,7 +14,7 @@ export type TreeItem<T> = {
   If you are showing files&directories it makes sense to set this to `true` for folders, and `false` for files.
   Default: true.
    */
-  canHaveChildren?: boolean;
+  canHaveChildren?: boolean | ((dragItem: FlattenedItem<T>) => boolean);
 
   /*
   If true, the node can not be sorted/moved/dragged.

@@ -31,42 +31,53 @@ export function getProjection<T>(
   const nextItem = newItems[overItemIndex + 1];
   const dragDepth = getDragDepth(dragOffset, indentationWidth);
   const projectedDepth = activeItem.depth + dragDepth;
-  const maxDepth = getMaxDepth({
-    previousItem,
-  });
-  const minDepth = getMinDepth({ nextItem });
   let depth = projectedDepth;
+  let parent = findParentWithDepth(depth - 1, previousItem);
+  parent = findParentWhichCanHaveChildren(parent, activeItem);
+  const maxDepth = (parent?.depth ?? -1) + 1;
+  const minDepth = nextItem?.depth ?? 0;
 
-  if (projectedDepth >= maxDepth) {
+  if (depth >= maxDepth) {
     depth = maxDepth;
   } else if (projectedDepth < minDepth) {
     depth = minDepth;
   }
-
-  let parent: FlattenedItem<T> | null = previousItem;
-  let previousItemOnDepth: FlattenedItem<T> | null = null;
-  let currentDepth = previousItem ? previousItem.depth + 1 : 0;
   const isLast = (nextItem?.depth ?? -1) < depth;
-  while (depth !== currentDepth) {
-    currentDepth--;
-    previousItemOnDepth = parent;
-    parent = parent?.parent ?? null;
-  }
 
-  if (previousItemOnDepth && previousItemOnDepth.isLast) {
+  if (parent && parent.isLast) {
     _revertLastChanges = () => {
-      previousItemOnDepth!.isLast = true;
+      parent!.isLast = true;
     };
-    previousItemOnDepth.isLast = false;
+    parent.isLast = false;
   }
   return {
     depth,
-    maxDepth,
-    minDepth,
     parentId: getParentId(),
     parent,
     isLast,
   };
+
+  function findParentWithDepth(depth: number, previousItem: FlattenedItem<T>) {
+    if (!previousItem) return null;
+    while (depth < previousItem.depth) {
+      if (previousItem.parent === null) return null;
+      previousItem = previousItem.parent;
+    }
+    return previousItem;
+  }
+  function findParentWhichCanHaveChildren(
+    parent: FlattenedItem<T> | null,
+    dragItem: FlattenedItem<T>
+  ) {
+    if (!parent) return parent;
+    const canHaveChildren =
+      typeof parent.canHaveChildren === 'function'
+        ? parent.canHaveChildren(dragItem)
+        : parent.canHaveChildren;
+    if (canHaveChildren === false)
+      return findParentWhichCanHaveChildren(parent.parent, activeItem);
+    return parent;
+  }
 
   function getParentId() {
     if (depth === 0 || !previousItem) {
@@ -88,24 +99,6 @@ export function getProjection<T>(
 
     return newParent ?? null;
   }
-}
-
-function getMaxDepth<T>({ previousItem }: { previousItem: FlattenedItem<T> }) {
-  if (previousItem) {
-    return previousItem.canHaveChildren === false
-      ? previousItem.depth
-      : previousItem.depth + 1;
-  }
-
-  return 0;
-}
-
-function getMinDepth<T>({ nextItem }: { nextItem: FlattenedItem<T> }) {
-  if (nextItem) {
-    return nextItem.depth;
-  }
-
-  return 0;
 }
 
 function flatten<T extends Record<string, any>>(
