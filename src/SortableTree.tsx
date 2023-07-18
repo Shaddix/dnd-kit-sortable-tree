@@ -67,7 +67,7 @@ export type SortableTreeProps<
   indicator?: boolean;
   pointerSensorOptions?: PointerSensorOptions;
   disableSorting?: boolean;
-  dropAnimation?: DropAnimation;
+  dropAnimation?: DropAnimation | null;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -277,7 +277,11 @@ export function SortableTree<
         })}
         {createPortal(
           <DragOverlay
-            dropAnimation={dropAnimation ?? dropAnimationDefaultConfig}
+            dropAnimation={
+              dropAnimation === undefined
+                ? dropAnimationDefaultConfig
+                : dropAnimation
+            }
           >
             {activeId && activeItem ? (
               <TreeItemComponent
