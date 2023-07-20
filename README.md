@@ -148,9 +148,9 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
   ```
 
 - `disableSorting` - _optional_, you could set this to `true` to completely disable the sorting
-- `keepGhostInPlace` - _optional_, you could set this to `true` to keep the Node that you are dragging in it's original place in a Tree. Check [VSCode](ADD LINK TO STORYBOOK) sample to see it in action.
-- `dndContextProps` - _optional_, override any prop of underlying [DndContext]().
-- `sortableProps` - _optional_, override any prop that is passed to underlying [useSortable]() hook.
+- `keepGhostInPlace` - _optional_, you could set this to `true` to keep the Node that you are dragging in it's original place in a Tree. Check [VSCode](https://shaddix.github.io/dnd-kit-sortable-tree/?path=/story/simple--vs-code-like) sample to see it in action.
+- `dndContextProps` - _optional_, override any prop of underlying [DndContext](https://docs.dndkit.com/api-documentation/context-provider#props).
+- `sortableProps` - _optional_, override any prop that is passed to underlying [useSortable](https://docs.dndkit.com/presets/sortable/usesortable) hook.
 
 ### TreeItemWrapper configuration (props of `<SimpleTreeItemWrapper>` and `<FolderTreeItemWrapper>`)
 
@@ -159,7 +159,7 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
 
 # FAQ
 
-1. If you want to [disable animation completely](LINK TO STORYBOOK), you need to do the following:
+1. If you want to [disable animation completely](https://shaddix.github.io/dnd-kit-sortable-tree/?path=/story/simple--no-drop-animation), you need to do the following:
    1. Pass `null` as `dropAnimation` prop (this disables the actual 'drop' animation for the Node that was dragged).
    1. Pass `{ animateLayoutChanges: () => false }` to `sortableProps` (this disables the animation of all other nodes that were not dragged)
 
