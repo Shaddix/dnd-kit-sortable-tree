@@ -301,6 +301,7 @@ export function SortableTree<
                 indentationWidth={indentationWidth}
                 isLast={false}
                 parent={activeItem.parent}
+                isOver={false}
               />
             ) : null}
           </DragOverlay>,
