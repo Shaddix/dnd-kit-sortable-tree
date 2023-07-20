@@ -75,11 +75,17 @@ export type TreeItemComponentProps<T = {}> = {
   True if sorting is disabled (so, drag handle should not be shown)
    */
   disableSorting?: boolean;
+
   /*
   True if the item is the last one among it's parent children.
   Might be important for e.g. FolderTreeItemWrapper to show correct images.
    */
   isLast: boolean;
+
+  /*
+  True if dragged item is over this Node.
+   */
+  isOver: boolean;
 
   /*
   If false, dragging is handled automatically (whole child node is a drag Handle).

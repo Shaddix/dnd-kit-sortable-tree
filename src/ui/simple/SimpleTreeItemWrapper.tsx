@@ -32,6 +32,7 @@ export const SimpleTreeItemWrapper = forwardRef<
     parent,
     className,
     contentClassName,
+    isOver,
     ...rest
   } = props;
 

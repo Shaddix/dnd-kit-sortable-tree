@@ -40,6 +40,11 @@ NoDropAnimation.args = {
   dropAnimation: null,
 };
 
+export const VSCodeLike = Template.bind({});
+VSCodeLike.args = {
+  keepGhostInPlace: true,
+};
+
 export const Minimal = () => {
   const [items, setItems] = useState(initialMinimalData);
   return (

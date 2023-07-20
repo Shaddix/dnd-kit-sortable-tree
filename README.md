@@ -148,6 +148,9 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
   ```
 
 - `disableSorting` - _optional_, you could set this to `true` to completely disable the sorting
+- `keepGhostInPlace` - _optional_, you could set this to `true` to keep the Node that you are dragging in it's original place in a Tree. Check [VSCode](ADD LINK TO STORYBOOK) sample to see it in action.
+- `dndContextProps` - _optional_, override any prop of underlying [DndContext]().
+- `sortableProps` - _optional_, override any prop that is passed to underlying [useSortable]() hook.
 
 ### TreeItemWrapper configuration (props of `<SimpleTreeItemWrapper>` and `<FolderTreeItemWrapper>`)
 

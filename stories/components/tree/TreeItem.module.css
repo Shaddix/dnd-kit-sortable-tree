@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.over {
+  background-color: lightgray;
+}
+
 .Count {
   position: absolute;
   top: -10px;

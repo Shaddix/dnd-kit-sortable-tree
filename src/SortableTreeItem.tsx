@@ -44,6 +44,7 @@ type SortableTreeItemProps<
   TreeItemComponent: TreeItemComponentType<T, TElement>;
   disableSorting?: boolean;
   sortableProps?: Omit<UseSortableArguments, 'id'>;
+  keepGhostInPlace?: boolean;
 };
 
 const SortableTreeItemNotMemoized = function SortableTreeItem<
@@ -57,6 +58,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
   parent,
   disableSorting,
   sortableProps,
+  keepGhostInPlace,
   ...props
 }: SortableTreeItemProps<T, TElement>) {
   const {
@@ -68,6 +70,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
     setDroppableNodeRef,
     transform,
     transition,
+    isOver,
   } = useSortable({
     id,
     animateLayoutChanges,
@@ -93,7 +96,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
       {...props}
       ref={setDraggableNodeRef}
       wrapperRef={setDroppableNodeRef}
-      style={style}
+      style={keepGhostInPlace ? undefined : style}
       depth={depth}
       ghost={isDragging}
       disableSelection={iOS}
@@ -107,6 +110,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
       onCollapse={localCollapse}
       onRemove={localRemove}
       disableSorting={disableSorting}
+      isOver={isOver}
     />
   );
 };

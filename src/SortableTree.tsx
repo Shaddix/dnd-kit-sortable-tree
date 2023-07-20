@@ -71,6 +71,7 @@ export type SortableTreeProps<
   dropAnimation?: DropAnimation | null;
   dndContextProps?: React.ComponentProps<typeof DndContext>;
   sortableProps?: Omit<UseSortableArguments, 'id'>;
+  keepGhostInPlace?: boolean;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -78,7 +79,7 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
   },
 };
 
-const dropAnimationDefaultConfig: DropAnimation = {
+export const dropAnimationDefaultConfig: DropAnimation = {
   keyframes({ transform }) {
     return [
       { opacity: 1, transform: CSS.Transform.toString(transform.initial) },
@@ -115,6 +116,7 @@ export function SortableTree<
   dropAnimation,
   dndContextProps,
   sortableProps,
+  keepGhostInPlace,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -254,7 +256,9 @@ export function SortableTree<
               item={item}
               childCount={item.children?.length}
               depth={
-                item.id === activeId && projected ? projected.depth : item.depth
+                item.id === activeId && projected && !keepGhostInPlace
+                  ? projected.depth
+                  : item.depth
               }
               indentationWidth={indentationWidth}
               indicator={indicator}
@@ -274,6 +278,7 @@ export function SortableTree<
               TreeItemComponent={TreeItemComponent}
               disableSorting={disableSorting}
               sortableProps={sortableProps}
+              keepGhostInPlace={keepGhostInPlace}
             />
           );
         })}
