@@ -1,6 +1,6 @@
 import { TreeItem } from './TreeItem';
 import React, { useState } from 'react';
-import { SortableTree, TreeItems } from '../../../src';
+import { SortableTree, SortableTreeProps, TreeItems } from '../../../src';
 import { TreeItemData } from '../TreeItemData';
 
 export const initialItems: TreeItems<TreeItemData> = [
@@ -55,23 +55,20 @@ export const initialItems: TreeItems<TreeItemData> = [
   },
 ];
 
-export type Props = {
-  indentationWidth: number;
-  indicator: boolean;
-  disableSorting: boolean;
-};
+export type Props = Omit<
+  SortableTreeProps<any, any>,
+  'TreeItemComponent' | 'onItemsChanged' | 'items'
+>;
 
 export const TreeRoot: React.FC<Props> = (props) => {
   const [items, setItems] = useState(initialItems);
 
   return (
     <SortableTree
-      indentationWidth={props.indentationWidth}
-      indicator={props.indicator}
-      disableSorting={props.disableSorting}
       items={items}
       onItemsChanged={setItems}
       TreeItemComponent={TreeItem}
+      {...props}
     />
   );
 };

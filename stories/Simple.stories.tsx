@@ -32,6 +32,14 @@ Simple2.args = {
   indentationWidth: 20,
 };
 
+export const NoDropAnimation = Template.bind({});
+NoDropAnimation.args = {
+  sortableProps: {
+    animateLayoutChanges: () => false,
+  },
+  dropAnimation: null,
+};
+
 export const Minimal = () => {
   const [items, setItems] = useState(initialMinimalData);
   return (

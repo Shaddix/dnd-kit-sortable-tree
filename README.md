@@ -154,6 +154,12 @@ Note that wrapping in `forwardRef` and passing `ref` to `SimpleTreeItemWrapper` 
 - `manualDrag` - Default: `false`. Set to `true` if you want tree item to be draggable ONLY from dragHandle.
 - `showDragHandle` - _optional_, set to `false` if you want to hide default dragHandle and show your own instead. Use `<div {...props.handleProps}>DRAG_ME</div>` for your own drag handle.
 
+# FAQ
+
+1. If you want to [disable animation completely](LINK TO STORYBOOK), you need to do the following:
+   1. Pass `null` as `dropAnimation` prop (this disables the actual 'drop' animation for the Node that was dragged).
+   1. Pass `{ animateLayoutChanges: () => false }` to `sortableProps` (this disables the animation of all other nodes that were not dragged)
+
 # Troubleshooting
 
 1. If your dragged item is shown at the end of a list, make sure you that:

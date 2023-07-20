@@ -31,6 +31,7 @@ import {
   arrayMove,
   SortableContext,
   verticalListSortingStrategy,
+  UseSortableArguments,
 } from '@dnd-kit/sortable';
 
 import {
@@ -68,6 +69,8 @@ export type SortableTreeProps<
   pointerSensorOptions?: PointerSensorOptions;
   disableSorting?: boolean;
   dropAnimation?: DropAnimation | null;
+  dndContextProps?: React.ComponentProps<typeof DndContext>;
+  sortableProps?: Omit<UseSortableArguments, 'id'>;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -75,11 +78,6 @@ const defaultPointerSensorOptions: PointerSensorOptions = {
   },
 };
 
-// const measuring = {
-//   droppable: {
-//     strategy: MeasuringStrategy.Always,
-//   },
-// };
 const dropAnimationDefaultConfig: DropAnimation = {
   keyframes({ transform }) {
     return [
@@ -115,6 +113,8 @@ export function SortableTree<
   pointerSensorOptions,
   disableSorting,
   dropAnimation,
+  dndContextProps,
+  sortableProps,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -239,6 +239,7 @@ export function SortableTree<
       onDragOver={disableSorting ? undefined : handleDragOver}
       onDragEnd={disableSorting ? undefined : handleDragEnd}
       onDragCancel={disableSorting ? undefined : handleDragCancel}
+      {...dndContextProps}
     >
       <SortableContext
         items={sortedIds}
@@ -272,6 +273,7 @@ export function SortableTree<
               }
               TreeItemComponent={TreeItemComponent}
               disableSorting={disableSorting}
+              sortableProps={sortableProps}
             />
           );
         })}

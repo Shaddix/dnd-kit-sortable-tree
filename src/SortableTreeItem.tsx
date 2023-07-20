@@ -1,5 +1,9 @@
 import React, { CSSProperties, HTMLAttributes, useMemo } from 'react';
-import { AnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
+import {
+  AnimateLayoutChanges,
+  UseSortableArguments,
+  useSortable,
+} from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 import { iOS } from './utilities';
@@ -39,6 +43,7 @@ type SortableTreeItemProps<
   id: string;
   TreeItemComponent: TreeItemComponentType<T, TElement>;
   disableSorting?: boolean;
+  sortableProps?: Omit<UseSortableArguments, 'id'>;
 };
 
 const SortableTreeItemNotMemoized = function SortableTreeItem<
@@ -51,6 +56,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
   TreeItemComponent,
   parent,
   disableSorting,
+  sortableProps,
   ...props
 }: SortableTreeItemProps<T, TElement>) {
   const {
@@ -66,6 +72,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
     id,
     animateLayoutChanges,
     disabled: disableSorting,
+    ...sortableProps,
   });
   const style: CSSProperties = {
     transform: CSS.Translate.toString(transform),
