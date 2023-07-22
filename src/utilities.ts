@@ -18,19 +18,37 @@ export function getProjection<T>(
   activeId: UniqueIdentifier | null,
   overId: UniqueIdentifier | null,
   dragOffset: number,
-  indentationWidth: number
-) {
+  indentationWidth: number,
+  keepGhostInPlace: boolean
+): {
+  depth: number;
+  parentId: UniqueIdentifier | null;
+  parent: FlattenedItem<T> | null;
+  isLast: boolean;
+} | null {
   _revertLastChanges();
   _revertLastChanges = () => {};
   if (!activeId || !overId) return null;
+
   const overItemIndex = items.findIndex(({ id }) => id === overId);
   const activeItemIndex = items.findIndex(({ id }) => id === activeId);
   const activeItem = items[activeItemIndex];
+  if (keepGhostInPlace) {
+    let parent: FlattenedItem<T> | null = items[overItemIndex];
+    parent = findParentWhichCanHaveChildren(parent, activeItem);
+    return {
+      depth: parent?.depth ?? 0 + 1,
+      parentId: parent?.id ?? null,
+      parent: parent,
+      isLast: !!parent?.isLast,
+    };
+  }
   const newItems = arrayMove(items, activeItemIndex, overItemIndex);
   const previousItem = newItems[overItemIndex - 1];
   const nextItem = newItems[overItemIndex + 1];
   const dragDepth = getDragDepth(dragOffset, indentationWidth);
   const projectedDepth = activeItem.depth + dragDepth;
+
   let depth = projectedDepth;
   let parent = findParentWithDepth(depth - 1, previousItem);
   parent = findParentWhichCanHaveChildren(parent, activeItem);

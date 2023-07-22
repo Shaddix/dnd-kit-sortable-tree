@@ -146,7 +146,8 @@ export function SortableTree<
     activeId,
     overId,
     offsetLeft,
-    indentationWidth
+    indentationWidth,
+    keepGhostInPlace ?? false
   );
   const sensorContext: SensorContext<TreeItemData> = useRef({
     items: flattenedItems,
