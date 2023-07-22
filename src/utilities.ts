@@ -159,7 +159,7 @@ export function buildTree<T extends Record<string, any>>(
     const { id } = item;
     const parentId = item.parentId ?? root.id;
     const parent = nodes[parentId] ?? findItem(items, parentId);
-
+    item.parent = null;
     nodes[id] = item;
     parent?.children?.push(item);
   }
