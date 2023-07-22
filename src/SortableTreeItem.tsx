@@ -6,7 +6,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-import { iOS } from './utilities';
+import { getIsOverParent, iOS } from './utilities';
 import type { FlattenedItem, TreeItem, TreeItemComponentType } from './types';
 import { UniqueIdentifier } from '@dnd-kit/core';
 
@@ -71,12 +71,17 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
     transform,
     transition,
     isOver,
+    over,
   } = useSortable({
     id,
     animateLayoutChanges,
     disabled: disableSorting,
     ...sortableProps,
   });
+  const isOverParent = useMemo(
+    () => !!over?.id && getIsOverParent(parent, over.id),
+    [over?.id]
+  );
   const style: CSSProperties = {
     transform: CSS.Translate.toString(transform),
     transition: transition ?? undefined,
@@ -111,6 +116,7 @@ const SortableTreeItemNotMemoized = function SortableTreeItem<
       onRemove={localRemove}
       disableSorting={disableSorting}
       isOver={isOver}
+      isOverParent={isOverParent}
     />
   );
 };

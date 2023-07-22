@@ -88,6 +88,11 @@ export type TreeItemComponentProps<T = {}> = {
   isOver: boolean;
 
   /*
+  True if dragged item is over the parent of this Node.
+   */
+  isOverParent: boolean;
+
+  /*
   If false, dragging is handled automatically (whole child node is a drag Handle).
   If true, the children should handle dragging manually (by assigning handleProps to some div that will be the Handle).
   Default: false.

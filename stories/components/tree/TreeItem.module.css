@@ -5,6 +5,10 @@
 }
 
 .over {
+  background-color: lightslategray;
+}
+
+.overParent {
   background-color: lightgray;
 }
 

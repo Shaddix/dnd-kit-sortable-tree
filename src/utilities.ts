@@ -260,3 +260,12 @@ export function removeChildrenOf<T>(
     return true;
   });
 }
+
+export function getIsOverParent<T>(
+  parent: FlattenedItem<T> | null,
+  overId: UniqueIdentifier
+): boolean {
+  if (!parent || !overId) return false;
+  if (parent.id === overId) return true;
+  return getIsOverParent(parent.parent, overId);
+}

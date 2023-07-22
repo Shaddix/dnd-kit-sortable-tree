@@ -39,6 +39,8 @@ export const FolderTreeItemWrapper = forwardRef<
     disableCollapseOnItemClick,
     className,
     contentClassName,
+    isOver,
+    isOverParent,
     ...rest
   } = props;
 

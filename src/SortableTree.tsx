@@ -302,6 +302,7 @@ export function SortableTree<
                 isLast={false}
                 parent={activeItem.parent}
                 isOver={false}
+                isOverParent={false}
               />
             ) : null}
           </DragOverlay>,
@@ -353,7 +354,7 @@ export function SortableTree<
       const currentParent = newActiveItem.parentId
         ? sortedItems.find((x) => x.id === newActiveItem.parentId)!
         : null;
-      // removing setTimeout leads to a unwanted scrolling
+      // removing setTimeout leads to an unwanted scrolling
       // Use case:
       //   There are a lot of items in a tree (so that the scroll exists).
       //   You take the node from the bottom and move it to the top
