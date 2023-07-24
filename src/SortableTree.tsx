@@ -342,7 +342,7 @@ export function SortableTree<
 
     if (projected && over) {
       const { depth, parentId } = projected;
-      if (over.id === active.id) return;
+      if (keepGhostInPlace && over.id === active.id) return;
       const clonedItems: FlattenedItem<TreeItemData>[] = flattenTree(items);
       const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
       const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
