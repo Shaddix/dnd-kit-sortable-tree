@@ -24,7 +24,7 @@ export function getProjection<T>(
 ): {
   depth: number;
   parentId: UniqueIdentifier | null;
-  parent: FlattenedItem<T> | null | undefined;
+  parent: FlattenedItem<T> | null;
   isLast: boolean;
 } | null {
   _revertLastChanges();

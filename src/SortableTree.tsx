@@ -54,6 +54,7 @@ import type {
 } from './types';
 // import { sortableTreeKeyboardCoordinates } from './keyboardCoordinates';
 import { SortableTreeItem } from './SortableTreeItem';
+import { customListSortingStrategy } from './SortingStrategy';
 
 export type SortableTreeProps<
   TData extends Record<string, any>,
@@ -234,6 +235,10 @@ export function SortableTree<
     }),
     []
   );
+
+  const strategyCallback = useCallback(() => {
+    return !!projected;
+  }, [projected]);
   return (
     <DndContext
       accessibility={{ announcements }}
@@ -250,7 +255,11 @@ export function SortableTree<
     >
       <SortableContext
         items={sortedIds}
-        strategy={disableSorting ? undefined : verticalListSortingStrategy}
+        strategy={
+          disableSorting
+            ? undefined
+            : customListSortingStrategy(strategyCallback)
+        }
       >
         {flattenedItems.map((item) => {
           return (
