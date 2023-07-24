@@ -48,6 +48,7 @@ import type {
   FlattenedItem,
   ItemChangedReason,
   SensorContext,
+  TreeItem,
   TreeItemComponentType,
   TreeItems,
 } from './types';
@@ -72,6 +73,7 @@ export type SortableTreeProps<
   dndContextProps?: React.ComponentProps<typeof DndContext>;
   sortableProps?: Omit<UseSortableArguments, 'id'>;
   keepGhostInPlace?: boolean;
+  canTopLevelHaveChildren?(item: TreeItem<TData>): boolean;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -117,6 +119,7 @@ export function SortableTree<
   dndContextProps,
   sortableProps,
   keepGhostInPlace,
+  canTopLevelHaveChildren,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -147,7 +150,8 @@ export function SortableTree<
     overId,
     offsetLeft,
     indentationWidth,
-    keepGhostInPlace ?? false
+    keepGhostInPlace ?? false,
+    canTopLevelHaveChildren
   );
   const sensorContext: SensorContext<TreeItemData> = useRef({
     items: flattenedItems,
