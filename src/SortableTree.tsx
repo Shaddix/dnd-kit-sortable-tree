@@ -74,7 +74,7 @@ export type SortableTreeProps<
   dndContextProps?: React.ComponentProps<typeof DndContext>;
   sortableProps?: Omit<UseSortableArguments, 'id'>;
   keepGhostInPlace?: boolean;
-  canTopLevelHaveChildren?(item: TreeItem<TData>): boolean;
+  canRootHaveChildren?(item: TreeItem<TData>): boolean;
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -120,7 +120,7 @@ export function SortableTree<
   dndContextProps,
   sortableProps,
   keepGhostInPlace,
-  canTopLevelHaveChildren,
+  canRootHaveChildren: canTopLevelHaveChildren,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);

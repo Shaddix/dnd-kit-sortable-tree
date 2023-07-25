@@ -39,9 +39,9 @@ NoDropAnimation.args = {
   },
   dropAnimation: null,
 };
-export const NoNewTopLevelItems = Template.bind({});
-NoNewTopLevelItems.args = {
-  canTopLevelHaveChildren: (item) => false,
+export const NoNewRootChildren = Template.bind({});
+NoNewRootChildren.args = {
+  canRootHaveChildren: (item) => false,
 };
 
 export const VSCodeLike = Template.bind({});

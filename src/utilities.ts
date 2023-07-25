@@ -20,7 +20,7 @@ export function getProjection<T>(
   dragOffset: number,
   indentationWidth: number,
   keepGhostInPlace: boolean,
-  canTopLevelHaveChildren?: (item: TreeItem<T>) => boolean
+  canRootHaveChildren?: (item: TreeItem<T>) => boolean
 ): {
   depth: number;
   parentId: UniqueIdentifier | null;
@@ -39,7 +39,7 @@ export function getProjection<T>(
     parent = findParentWhichCanHaveChildren(
       parent,
       activeItem,
-      canTopLevelHaveChildren
+      canRootHaveChildren
     );
     if (parent === undefined) return null;
     return {
@@ -60,7 +60,7 @@ export function getProjection<T>(
   let parent = findParentWhichCanHaveChildren(
     directParent,
     activeItem,
-    canTopLevelHaveChildren
+    canRootHaveChildren
   );
   if (parent === undefined) return null;
   const maxDepth = (parent?.depth ?? -1) + 1;
@@ -97,12 +97,12 @@ export function getProjection<T>(
   function findParentWhichCanHaveChildren(
     parent: FlattenedItem<T> | null,
     dragItem: FlattenedItem<T>,
-    canTopLevelHaveChildren?: (item: TreeItem<T>) => boolean
+    canRootHaveChildren?: (item: TreeItem<T>) => boolean
   ): FlattenedItem<T> | null | undefined {
     if (!parent) {
       if (
-        (!!canTopLevelHaveChildren && canTopLevelHaveChildren(dragItem)) ||
-        canTopLevelHaveChildren === undefined
+        (!!canRootHaveChildren && canRootHaveChildren(dragItem)) ||
+        canRootHaveChildren === undefined
       ) {
         return parent;
       }
@@ -116,7 +116,7 @@ export function getProjection<T>(
       return findParentWhichCanHaveChildren(
         parent.parent,
         activeItem,
-        canTopLevelHaveChildren
+        canRootHaveChildren
       );
     return parent;
   }
