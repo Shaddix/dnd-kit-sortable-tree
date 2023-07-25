@@ -20,7 +20,7 @@ export function getProjection<T>(
   dragOffset: number,
   indentationWidth: number,
   keepGhostInPlace: boolean,
-  canRootHaveChildren?: (item: TreeItem<T>) => boolean
+  canRootHaveChildren?: boolean | ((dragItem: FlattenedItem<T>) => boolean)
 ): {
   depth: number;
   parentId: UniqueIdentifier | null;
@@ -97,16 +97,15 @@ export function getProjection<T>(
   function findParentWhichCanHaveChildren(
     parent: FlattenedItem<T> | null,
     dragItem: FlattenedItem<T>,
-    canRootHaveChildren?: (item: TreeItem<T>) => boolean
+    canRootHaveChildren?: boolean | ((dragItem: FlattenedItem<T>) => boolean)
   ): FlattenedItem<T> | null | undefined {
     if (!parent) {
-      if (
-        (!!canRootHaveChildren && canRootHaveChildren(dragItem)) ||
-        canRootHaveChildren === undefined
-      ) {
-        return parent;
-      }
-      return undefined;
+      const rootCanHaveChildren =
+        typeof canRootHaveChildren === 'function'
+          ? canRootHaveChildren(dragItem)
+          : canRootHaveChildren;
+      if (rootCanHaveChildren === false) return undefined;
+      return parent;
     }
     const canHaveChildren =
       typeof parent.canHaveChildren === 'function'

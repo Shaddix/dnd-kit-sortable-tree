@@ -30,7 +30,6 @@ import { CSS } from '@dnd-kit/utilities';
 import {
   arrayMove,
   SortableContext,
-  verticalListSortingStrategy,
   UseSortableArguments,
 } from '@dnd-kit/sortable';
 
@@ -48,7 +47,6 @@ import type {
   FlattenedItem,
   ItemChangedReason,
   SensorContext,
-  TreeItem,
   TreeItemComponentType,
   TreeItems,
 } from './types';
@@ -74,7 +72,7 @@ export type SortableTreeProps<
   dndContextProps?: React.ComponentProps<typeof DndContext>;
   sortableProps?: Omit<UseSortableArguments, 'id'>;
   keepGhostInPlace?: boolean;
-  canRootHaveChildren?(item: TreeItem<TData>): boolean;
+  canRootHaveChildren?: boolean | ((dragItem: FlattenedItem<TData>) => boolean);
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -120,7 +118,7 @@ export function SortableTree<
   dndContextProps,
   sortableProps,
   keepGhostInPlace,
-  canRootHaveChildren: canTopLevelHaveChildren,
+  canRootHaveChildren,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -152,7 +150,7 @@ export function SortableTree<
     offsetLeft,
     indentationWidth,
     keepGhostInPlace ?? false,
-    canTopLevelHaveChildren
+    canRootHaveChildren
   );
   const sensorContext: SensorContext<TreeItemData> = useRef({
     items: flattenedItems,
