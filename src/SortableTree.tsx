@@ -30,7 +30,6 @@ import { CSS } from '@dnd-kit/utilities';
 import {
   arrayMove,
   SortableContext,
-  verticalListSortingStrategy,
   UseSortableArguments,
 } from '@dnd-kit/sortable';
 
@@ -53,6 +52,7 @@ import type {
 } from './types';
 // import { sortableTreeKeyboardCoordinates } from './keyboardCoordinates';
 import { SortableTreeItem } from './SortableTreeItem';
+import { customListSortingStrategy } from './SortingStrategy';
 
 export type SortableTreeProps<
   TData extends Record<string, any>,
@@ -72,6 +72,7 @@ export type SortableTreeProps<
   dndContextProps?: React.ComponentProps<typeof DndContext>;
   sortableProps?: Omit<UseSortableArguments, 'id'>;
   keepGhostInPlace?: boolean;
+  canRootHaveChildren?: boolean | ((dragItem: FlattenedItem<TData>) => boolean);
 };
 const defaultPointerSensorOptions: PointerSensorOptions = {
   activationConstraint: {
@@ -117,6 +118,7 @@ export function SortableTree<
   dndContextProps,
   sortableProps,
   keepGhostInPlace,
+  canRootHaveChildren,
   ...rest
 }: SortableTreeProps<TreeItemData, TElement>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -147,7 +149,8 @@ export function SortableTree<
     overId,
     offsetLeft,
     indentationWidth,
-    keepGhostInPlace ?? false
+    keepGhostInPlace ?? false,
+    canRootHaveChildren
   );
   const sensorContext: SensorContext<TreeItemData> = useRef({
     items: flattenedItems,
@@ -230,6 +233,10 @@ export function SortableTree<
     }),
     []
   );
+
+  const strategyCallback = useCallback(() => {
+    return !!projected;
+  }, [projected]);
   return (
     <DndContext
       accessibility={{ announcements }}
@@ -246,7 +253,11 @@ export function SortableTree<
     >
       <SortableContext
         items={sortedIds}
-        strategy={disableSorting ? undefined : verticalListSortingStrategy}
+        strategy={
+          disableSorting
+            ? undefined
+            : customListSortingStrategy(strategyCallback)
+        }
       >
         {flattenedItems.map((item) => {
           return (

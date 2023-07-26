@@ -39,6 +39,10 @@ NoDropAnimation.args = {
   },
   dropAnimation: null,
 };
+export const NoNewRootChildren = Template.bind({});
+NoNewRootChildren.args = {
+  canRootHaveChildren: false,
+};
 
 export const VSCodeLike = Template.bind({});
 VSCodeLike.args = {

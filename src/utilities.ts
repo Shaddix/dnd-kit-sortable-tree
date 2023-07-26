@@ -19,7 +19,8 @@ export function getProjection<T>(
   overId: UniqueIdentifier | null,
   dragOffset: number,
   indentationWidth: number,
-  keepGhostInPlace: boolean
+  keepGhostInPlace: boolean,
+  canRootHaveChildren?: boolean | ((dragItem: FlattenedItem<T>) => boolean)
 ): {
   depth: number;
   parentId: UniqueIdentifier | null;
@@ -34,8 +35,13 @@ export function getProjection<T>(
   const activeItemIndex = items.findIndex(({ id }) => id === activeId);
   const activeItem = items[activeItemIndex];
   if (keepGhostInPlace) {
-    let parent: FlattenedItem<T> | null = items[overItemIndex];
-    parent = findParentWhichCanHaveChildren(parent, activeItem);
+    let parent: FlattenedItem<T> | null | undefined = items[overItemIndex];
+    parent = findParentWhichCanHaveChildren(
+      parent,
+      activeItem,
+      canRootHaveChildren
+    );
+    if (parent === undefined) return null;
     return {
       depth: parent?.depth ?? 0 + 1,
       parentId: parent?.id ?? null,
@@ -50,8 +56,13 @@ export function getProjection<T>(
   const projectedDepth = activeItem.depth + dragDepth;
 
   let depth = projectedDepth;
-  let parent = findParentWithDepth(depth - 1, previousItem);
-  parent = findParentWhichCanHaveChildren(parent, activeItem);
+  let directParent = findParentWithDepth(depth - 1, previousItem);
+  let parent = findParentWhichCanHaveChildren(
+    directParent,
+    activeItem,
+    canRootHaveChildren
+  );
+  if (parent === undefined) return null;
   const maxDepth = (parent?.depth ?? -1) + 1;
   const minDepth = nextItem?.depth ?? 0;
 
@@ -85,15 +96,27 @@ export function getProjection<T>(
   }
   function findParentWhichCanHaveChildren(
     parent: FlattenedItem<T> | null,
-    dragItem: FlattenedItem<T>
-  ): FlattenedItem<T> | null {
-    if (!parent) return parent;
+    dragItem: FlattenedItem<T>,
+    canRootHaveChildren?: boolean | ((dragItem: FlattenedItem<T>) => boolean)
+  ): FlattenedItem<T> | null | undefined {
+    if (!parent) {
+      const rootCanHaveChildren =
+        typeof canRootHaveChildren === 'function'
+          ? canRootHaveChildren(dragItem)
+          : canRootHaveChildren;
+      if (rootCanHaveChildren === false) return undefined;
+      return parent;
+    }
     const canHaveChildren =
       typeof parent.canHaveChildren === 'function'
         ? parent.canHaveChildren(dragItem)
         : parent.canHaveChildren;
     if (canHaveChildren === false)
-      return findParentWhichCanHaveChildren(parent.parent, activeItem);
+      return findParentWhichCanHaveChildren(
+        parent.parent,
+        activeItem,
+        canRootHaveChildren
+      );
     return parent;
   }
 
