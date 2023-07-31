@@ -65,10 +65,10 @@ export function getProjection<T>(
   if (parent === undefined) return null;
   const maxDepth = (parent?.depth ?? -1) + 1;
   const minDepth = nextItem?.depth ?? 0;
-
+  if (minDepth > maxDepth) return null;
   if (depth >= maxDepth) {
     depth = maxDepth;
-  } else if (projectedDepth < minDepth) {
+  } else if (depth < minDepth) {
     depth = minDepth;
   }
   const isLast = (nextItem?.depth ?? -1) < depth;
