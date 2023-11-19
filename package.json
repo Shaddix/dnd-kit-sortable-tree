@@ -22,7 +22,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6016",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6016",
     "typecheck": "tsc --skipLibCheck",
     "do-publish": "yarn version patch && yarn build && npm publish",
     "start": "tsdx watch",
@@ -84,6 +84,7 @@
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
     "copyfiles": "^2.3.0",
+    "cross-env": "^7.0.3",
     "cssnano": "^5.0.12",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-prettier": "^4.0.0",

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { TreeRoot } from './components/tree/TreeRoot';
+import {
+  TreeRoot,
+  TreeRootWithChangeableItems,
+  initialItems,
+} from './components/tree/TreeRoot';
 import {
   SimpleTreeItemWrapper,
   SortableTree,
@@ -127,3 +131,9 @@ const initialViableMinimalData: TreeItems<MinimalTreeItemData> = [
   },
 ];
 export { WithInput };
+
+export const SimpleWithChangedItems: ComponentStory<typeof TreeRoot> = (
+  args
+) => {
+  return <TreeRootWithChangeableItems {...args} />;
+};

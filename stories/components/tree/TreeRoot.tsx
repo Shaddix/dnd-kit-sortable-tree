@@ -72,3 +72,35 @@ export const TreeRoot: React.FC<Props> = (props) => {
     />
   );
 };
+
+export const TreeRootWithChangeableItems: React.FC<Props> = (props) => {
+  const [items, setItems] = useState(initialItems);
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          setItems((oldItems) => {
+            return [
+              {
+                id: 'NewItem' + new Date().getTime(),
+                text: 'New Item',
+                date: new Date(),
+                children: [],
+              },
+              ...oldItems,
+            ];
+          });
+        }}
+      >
+        Add Item
+      </button>
+      <SortableTree
+        items={items}
+        onItemsChanged={setItems}
+        TreeItemComponent={TreeItem}
+        {...props}
+      />
+    </>
+  );
+};
