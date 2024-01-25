@@ -77,6 +77,11 @@ export type TreeItemComponentProps<T = {}> = {
   disableSorting?: boolean;
 
   /*
+  If true will remove default styling
+  */
+  disableStyling?: boolean;
+
+  /*
   True if the item is the last one among it's parent children.
   Might be important for e.g. FolderTreeItemWrapper to show correct images.
    */
