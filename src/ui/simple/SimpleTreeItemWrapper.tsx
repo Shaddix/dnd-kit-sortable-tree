@@ -13,6 +13,7 @@ export const SimpleTreeItemWrapper = forwardRef<
     disableSelection,
     disableInteraction,
     disableSorting,
+    disableStyling,
     ghost,
     handleProps,
     indentationWidth,
@@ -55,7 +56,11 @@ export const SimpleTreeItemWrapper = forwardRef<
       }}
     >
       <div
-        className={clsx('dnd-sortable-tree_simple_tree-item', contentClassName)}
+        className={
+          disableStyling
+            ? undefined
+            : clsx('dnd-sortable-tree_simple_tree-item', contentClassName)
+        }
         ref={ref}
         {...(manualDrag ? undefined : handleProps)}
         onClick={disableCollapseOnItemClick ? undefined : onCollapse}
